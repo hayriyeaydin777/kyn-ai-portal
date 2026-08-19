@@ -1,0 +1,28 @@
+# Reference planning materials stay local, not tracked in this repo
+materials/
+
+# OS
+.DS_Store
+
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Build output
+dist/
+build/
+.svelte-kit/
+bin/
+obj/
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# Editor
+.vscode/*
+!.vscode/settings.json
