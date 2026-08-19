@@ -1,0 +1,9 @@
+#!/bin/sh
+# Block commits containing likely secrets (gitleaks must be installed locally)
+if command -v gitleaks >/dev/null 2>&1; then
+  gitleaks protect --staged --redact --no-banner
+  exit $?
+else
+  echo "gitleaks not found; install with 'brew install gitleaks' to enable secret scanning" >&2
+  exit 1
+fi
