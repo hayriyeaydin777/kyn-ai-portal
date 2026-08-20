@@ -26,3 +26,7 @@ obj/
 # Editor
 .vscode/*
 !.vscode/settings.json
+
+# services (.NET)
+services/**/bin/
+services/**/obj/
