@@ -11,7 +11,7 @@ from alembic import context
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 
 from app.config import settings  # noqa: E402
-from app.models import application, audit, brief, dependency, evidence, finding  # noqa: E402,F401
+from app.models import application, approval, audit, brief, dependency, evidence, finding  # noqa: E402,F401
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
