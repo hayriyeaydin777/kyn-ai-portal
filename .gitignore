@@ -30,3 +30,4 @@ obj/
 # services (.NET)
 services/**/bin/
 services/**/obj/
+services/**/TestResults/
