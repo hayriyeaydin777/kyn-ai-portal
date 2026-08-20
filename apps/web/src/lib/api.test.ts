@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
-import { getApplication, listApplications } from './api';
+import { getApplication, listApplications, listFindings, triggerAssessment } from './api';
 
 describe('api client', () => {
 	it('listApplications returns parsed JSON on success', async () => {
@@ -31,5 +31,24 @@ describe('api client', () => {
 		await getApplication('abc', mockFetch as unknown as typeof fetch);
 
 		expect(mockFetch).toHaveBeenCalledWith(expect.stringContaining('/v1/applications/abc'));
+	});
+
+	it('listFindings requests the assessments path', async () => {
+		const mockFetch = vi.fn().mockResolvedValue({ ok: true, json: async () => [] });
+
+		await listFindings('abc', mockFetch as unknown as typeof fetch);
+
+		expect(mockFetch).toHaveBeenCalledWith(expect.stringContaining('/v1/applications/abc/assessments'));
+	});
+
+	it('triggerAssessment posts to the assessments path', async () => {
+		const mockFetch = vi.fn().mockResolvedValue({ ok: true, json: async () => [] });
+
+		await triggerAssessment('abc', mockFetch as unknown as typeof fetch);
+
+		expect(mockFetch).toHaveBeenCalledWith(
+			expect.stringContaining('/v1/applications/abc/assessments'),
+			{ method: 'POST' }
+		);
 	});
 });
