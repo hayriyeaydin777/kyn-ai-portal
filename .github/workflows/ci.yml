@@ -42,12 +42,12 @@ jobs:
 
   policy-service:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: services/policy-service
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '10.0.x'
       - run: dotnet build
+        working-directory: services/policy-service
+      - run: dotnet test
+        working-directory: services/PolicyService.Tests
