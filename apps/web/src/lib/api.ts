@@ -37,6 +37,16 @@ export interface Finding {
 	created_at: string;
 }
 
+export interface Brief {
+	id: string;
+	application_id: string;
+	provider: string;
+	text: string;
+	citations: string[];
+	status: string;
+	created_at: string;
+}
+
 const API_BASE_URL = process.env.API_BASE_URL ?? 'http://127.0.0.1:8000';
 
 async function getJson<T>(path: string, fetchFn: typeof fetch): Promise<T> {
@@ -47,8 +57,14 @@ async function getJson<T>(path: string, fetchFn: typeof fetch): Promise<T> {
 	return response.json() as Promise<T>;
 }
 
-async function postJson<T>(path: string, fetchFn: typeof fetch): Promise<T> {
-	const response = await fetchFn(`${API_BASE_URL}${path}`, { method: 'POST' });
+async function postJson<T>(path: string, fetchFn: typeof fetch, body?: unknown): Promise<T> {
+	const response = await fetchFn(`${API_BASE_URL}${path}`, {
+		method: 'POST',
+		...(body !== undefined && {
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(body)
+		})
+	});
 	if (!response.ok) {
 		throw new Error(`Request to ${path} failed with status ${response.status}`);
 	}
@@ -77,4 +93,21 @@ export function listFindings(id: string, fetchFn: typeof fetch): Promise<Finding
 
 export function triggerAssessment(id: string, fetchFn: typeof fetch): Promise<Finding[]> {
 	return postJson(`/v1/applications/${id}/assessments`, fetchFn);
+}
+
+export function listBriefs(id: string, fetchFn: typeof fetch): Promise<Brief[]> {
+	return getJson(`/v1/applications/${id}/briefs`, fetchFn);
+}
+
+export function generateBrief(id: string, fetchFn: typeof fetch): Promise<Brief> {
+	return postJson(`/v1/applications/${id}/briefs`, fetchFn);
+}
+
+export function decideBrief(
+	applicationId: string,
+	briefId: string,
+	decision: 'approve' | 'reject',
+	fetchFn: typeof fetch
+): Promise<Brief> {
+	return postJson(`/v1/applications/${applicationId}/briefs/${briefId}/approvals`, fetchFn, { decision });
 }

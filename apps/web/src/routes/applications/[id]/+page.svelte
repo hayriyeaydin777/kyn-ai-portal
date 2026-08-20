@@ -53,4 +53,32 @@
 	</ul>
 {/if}
 
+<h2>AI Briefing</h2>
+<form method="POST" action="?/generateBrief" use:enhance>
+	<button type="submit">Generate brief (AI_PROVIDER=fake, no tokens used)</button>
+</form>
+{#if data.briefs.length === 0}
+	<p>No briefs yet. Generate one above.</p>
+{:else}
+	<ul>
+		{#each data.briefs as brief (brief.id)}
+			<li>
+				<p><em>provider: {brief.provider} — status: {brief.status}</em></p>
+				<pre>{brief.text}</pre>
+				<p>Citations: {brief.citations.join(', ')}</p>
+				{#if brief.status === 'draft'}
+					<form method="POST" action="?/approveBrief" use:enhance>
+						<input type="hidden" name="briefId" value={brief.id} />
+						<button type="submit">Approve</button>
+					</form>
+					<form method="POST" action="?/rejectBrief" use:enhance>
+						<input type="hidden" name="briefId" value={brief.id} />
+						<button type="submit">Reject</button>
+					</form>
+				{/if}
+			</li>
+		{/each}
+	</ul>
+{/if}
+
 <p><a href="/applications">Back to list</a></p>
