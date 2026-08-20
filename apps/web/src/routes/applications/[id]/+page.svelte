@@ -1,7 +1,9 @@
 <script lang="ts">
-	import type { PageData } from './$types';
+	import { enhance } from '$app/forms';
+	import type { ActionData, PageData } from './$types';
 
 	export let data: PageData;
+	export let form: ActionData;
 </script>
 
 <h1>{data.application.name}</h1>
@@ -27,6 +29,26 @@
 	<ul>
 		{#each data.evidence as ev (ev.id)}
 			<li>{ev.title} — {ev.source}</li>
+		{/each}
+	</ul>
+{/if}
+
+<h2>Assessment</h2>
+<form method="POST" action="?/evaluate" use:enhance>
+	<button type="submit">Run deterministic assessment</button>
+</form>
+{#if form?.message}
+	<p role="alert">{form.message}</p>
+{/if}
+{#if data.findings.length === 0}
+	<p>No findings yet. Run an assessment to generate findings.</p>
+{:else}
+	<ul>
+		{#each data.findings as finding (finding.id)}
+			<li>
+				<strong>{finding.severity}</strong> [{finding.rule_id}] {finding.message}
+				(evidence: {finding.evidence_fields.join(', ')})
+			</li>
 		{/each}
 	</ul>
 {/if}
