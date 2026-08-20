@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using PolicyService.Contracts;
 using PolicyService.Rules;
 
@@ -6,6 +7,10 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+builder.Services.ConfigureHttpJsonOptions(options =>
+{
+    options.SerializerOptions.Converters.Add(new JsonStringEnumConverter());
+});
 builder.Services.AddSingleton<IEnumerable<IPolicyRule>>(
     new IPolicyRule[]
     {

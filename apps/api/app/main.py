@@ -2,7 +2,7 @@ from fastapi import FastAPI
 
 from app.logging_config import configure_logging
 from app.middleware.correlation import correlation_id_middleware
-from app.routers import applications, dependencies, evidence, health
+from app.routers import applications, assessments, dependencies, evidence, health
 
 configure_logging()
 
@@ -13,3 +13,4 @@ app.include_router(health.router)
 app.include_router(applications.router)
 app.include_router(dependencies.router)
 app.include_router(evidence.router)
+app.include_router(assessments.router)
