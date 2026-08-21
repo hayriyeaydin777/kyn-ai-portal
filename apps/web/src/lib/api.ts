@@ -78,6 +78,42 @@ export interface ModernizationRecommendation {
 	created_at: string;
 }
 
+export interface CodeFinding {
+	rule_id: string;
+	severity: string;
+	message: string;
+	line: number | null;
+}
+
+export interface CodeReview {
+	id: string;
+	source_snippet: string;
+	language: string;
+	findings: CodeFinding[];
+	provider: string;
+	summary: string;
+	citations: string[];
+	status: string;
+	created_at: string;
+}
+
+export interface GeneratedTestSuite {
+	id: string;
+	source_snippet: string;
+	generated_tests: string;
+	status: string;
+	created_at: string;
+}
+
+export interface DocumentationDraft {
+	id: string;
+	source_snippet: string;
+	draft_text: string;
+	version: number;
+	status: string;
+	created_at: string;
+}
+
 const API_BASE_URL = process.env.API_BASE_URL ?? 'http://127.0.0.1:8000';
 
 async function getJson<T>(path: string, fetchFn: typeof fetch): Promise<T> {
@@ -177,4 +213,22 @@ export function createModernizationRecommendation(
 		`/v1/applications/${applicationId}/modernization-recommendations?case_id=${caseId}`,
 		fetchFn
 	);
+}
+
+export function createCodeReview(sourceSnippet: string, fetchFn: typeof fetch): Promise<CodeReview> {
+	return postJson('/v1/code-reviews', fetchFn, { source_snippet: sourceSnippet });
+}
+
+export function createTestGeneration(
+	sourceSnippet: string,
+	fetchFn: typeof fetch
+): Promise<GeneratedTestSuite> {
+	return postJson('/v1/test-generations', fetchFn, { source_snippet: sourceSnippet });
+}
+
+export function createDocumentationDraft(
+	sourceSnippet: string,
+	fetchFn: typeof fetch
+): Promise<DocumentationDraft> {
+	return postJson('/v1/documentation-drafts', fetchFn, { source_snippet: sourceSnippet });
 }
