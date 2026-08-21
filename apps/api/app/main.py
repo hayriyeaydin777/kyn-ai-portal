@@ -5,6 +5,7 @@ from app.middleware.correlation import correlation_id_middleware
 from app.routers import (
     applications,
     approvals,
+    architecture_decisions,
     assessments,
     briefs,
     code_reviews,
@@ -34,3 +35,4 @@ app.include_router(modernization_recommendations.router)
 app.include_router(code_reviews.router)
 app.include_router(test_generations.router)
 app.include_router(documentation_drafts.router)
+app.include_router(architecture_decisions.router)
