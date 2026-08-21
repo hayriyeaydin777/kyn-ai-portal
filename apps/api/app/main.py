@@ -13,6 +13,7 @@ from app.routers import (
     health,
     modernization_cases,
     modernization_recommendations,
+    test_generations,
 )
 
 configure_logging()
@@ -30,3 +31,4 @@ app.include_router(approvals.router)
 app.include_router(modernization_cases.router)
 app.include_router(modernization_recommendations.router)
 app.include_router(code_reviews.router)
+app.include_router(test_generations.router)

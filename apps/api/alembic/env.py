@@ -20,6 +20,7 @@ from app.models import (  # noqa: E402,F401
     dependency,
     evidence,
     finding,
+    generated_test_suite,
     modernization_case,
     modernization_recommendation,
 )
