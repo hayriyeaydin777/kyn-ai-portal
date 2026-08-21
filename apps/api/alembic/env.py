@@ -18,6 +18,7 @@ from app.models import (  # noqa: E402,F401
     brief,
     code_review,
     dependency,
+    documentation_draft,
     evidence,
     finding,
     generated_test_suite,

@@ -9,6 +9,7 @@ from app.routers import (
     briefs,
     code_reviews,
     dependencies,
+    documentation_drafts,
     evidence,
     health,
     modernization_cases,
@@ -32,3 +33,4 @@ app.include_router(modernization_cases.router)
 app.include_router(modernization_recommendations.router)
 app.include_router(code_reviews.router)
 app.include_router(test_generations.router)
+app.include_router(documentation_drafts.router)
