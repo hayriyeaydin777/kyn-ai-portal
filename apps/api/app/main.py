@@ -7,6 +7,7 @@ from app.routers import (
     approvals,
     assessments,
     briefs,
+    code_reviews,
     dependencies,
     evidence,
     health,
@@ -28,3 +29,4 @@ app.include_router(briefs.router)
 app.include_router(approvals.router)
 app.include_router(modernization_cases.router)
 app.include_router(modernization_recommendations.router)
+app.include_router(code_reviews.router)
