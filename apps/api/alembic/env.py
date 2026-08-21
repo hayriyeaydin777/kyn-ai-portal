@@ -14,6 +14,8 @@ from app.config import settings  # noqa: E402
 from app.models import (  # noqa: E402,F401
     application,
     approval,
+    architecture_decision,
+    architecture_review,
     audit,
     brief,
     code_review,
