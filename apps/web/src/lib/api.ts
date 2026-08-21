@@ -8,6 +8,19 @@ export interface ApplicationProfile {
 	updated_at: string;
 }
 
+export interface ArchitectureDecision {
+	id: string;
+	title: string;
+	context: string;
+	drivers: string;
+	alternatives: string;
+	decision: string;
+	consequences: string;
+	status: string;
+	version: number;
+	created_at: string;
+}
+
 export interface Dependency {
 	id: string;
 	application_id: string;
@@ -232,3 +245,36 @@ export function createDocumentationDraft(
 ): Promise<DocumentationDraft> {
 	return postJson('/v1/documentation-drafts', fetchFn, { source_snippet: sourceSnippet });
 }
+
+export function listArchitectureDecisions(fetchFn: typeof fetch): Promise<ArchitectureDecision[]> {
+	return getJson('/v1/architecture-decisions', fetchFn);
+}
+
+export function createArchitectureDecision(
+	payload: { title: string; context: string; drivers: string; decision: string; consequences: string },
+	fetchFn: typeof fetch
+): Promise<ArchitectureDecision> {
+	return postJson('/v1/architecture-decisions', fetchFn, payload);
+}
+
+export function proposeArchitectureDecision(
+	decisionId: string,
+	fetchFn: typeof fetch
+): Promise<ArchitectureDecision> {
+	return postJson(`/v1/architecture-decisions/${decisionId}/propose`, fetchFn);
+}
+
+export function acceptArchitectureDecision(
+	decisionId: string,
+	fetchFn: typeof fetch
+): Promise<ArchitectureDecision> {
+	return postJson(`/v1/architecture-decisions/${decisionId}/accept`, fetchFn);
+}
+
+export function rejectArchitectureDecision(
+	decisionId: string,
+	fetchFn: typeof fetch
+): Promise<ArchitectureDecision> {
+	return postJson(`/v1/architecture-decisions/${decisionId}/reject`, fetchFn);
+}
+
