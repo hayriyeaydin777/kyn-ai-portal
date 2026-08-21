@@ -6,10 +6,12 @@ from app.routers import (
     applications,
     approvals,
     architecture_decisions,
+    architecture_reviews,
     assessments,
     briefs,
     code_reviews,
     dependencies,
+    diagrams,
     documentation_drafts,
     evidence,
     health,
@@ -36,3 +38,5 @@ app.include_router(code_reviews.router)
 app.include_router(test_generations.router)
 app.include_router(documentation_drafts.router)
 app.include_router(architecture_decisions.router)
+app.include_router(architecture_reviews.router)
+app.include_router(diagrams.router)

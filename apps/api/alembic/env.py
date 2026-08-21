@@ -20,6 +20,7 @@ from app.models import (  # noqa: E402,F401
     brief,
     code_review,
     dependency,
+    diagram_metadata,
     documentation_draft,
     evidence,
     finding,
