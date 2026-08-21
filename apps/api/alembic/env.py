@@ -20,6 +20,7 @@ from app.models import (  # noqa: E402,F401
     evidence,
     finding,
     modernization_case,
+    modernization_recommendation,
 )
 
 # this is the Alembic Config object, which provides

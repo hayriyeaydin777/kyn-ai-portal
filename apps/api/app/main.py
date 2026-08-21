@@ -2,7 +2,17 @@ from fastapi import FastAPI
 
 from app.logging_config import configure_logging
 from app.middleware.correlation import correlation_id_middleware
-from app.routers import applications, approvals, assessments, briefs, dependencies, evidence, health
+from app.routers import (
+    applications,
+    approvals,
+    assessments,
+    briefs,
+    dependencies,
+    evidence,
+    health,
+    modernization_cases,
+    modernization_recommendations,
+)
 
 configure_logging()
 
@@ -16,3 +26,5 @@ app.include_router(evidence.router)
 app.include_router(assessments.router)
 app.include_router(briefs.router)
 app.include_router(approvals.router)
+app.include_router(modernization_cases.router)
+app.include_router(modernization_recommendations.router)
