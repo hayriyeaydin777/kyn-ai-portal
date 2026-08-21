@@ -10,6 +10,7 @@
 <p>{data.application.description ?? 'No description provided.'}</p>
 <p>Business owner: {data.application.business_owner ?? 'Unassigned'}</p>
 <p>Criticality: {data.application.criticality}</p>
+<p><a href={`/applications/${data.application.id}/modernization`}>Modernization Advisor</a></p>
 
 <h2>Dependencies</h2>
 {#if data.dependencies.length === 0}

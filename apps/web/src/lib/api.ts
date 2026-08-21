@@ -47,6 +47,37 @@ export interface Brief {
 	created_at: string;
 }
 
+export interface ModernizationCase {
+	id: string;
+	application_id: string;
+	technology_stack: string;
+	hosting: string;
+	release_process: string;
+	scale: string;
+	pain_points: string;
+	created_at: string;
+}
+
+export interface RiskSignal {
+	rule_id: string;
+	severity: string;
+	message: string;
+}
+
+export interface ModernizationRecommendation {
+	id: string;
+	application_id: string;
+	modernization_case_id: string;
+	complexity_score: number;
+	risk_signals: RiskSignal[];
+	matched_option_ids: string[];
+	provider: string;
+	narrative: string;
+	citations: string[];
+	status: string;
+	created_at: string;
+}
+
 const API_BASE_URL = process.env.API_BASE_URL ?? 'http://127.0.0.1:8000';
 
 async function getJson<T>(path: string, fetchFn: typeof fetch): Promise<T> {
@@ -110,4 +141,40 @@ export function decideBrief(
 	fetchFn: typeof fetch
 ): Promise<Brief> {
 	return postJson(`/v1/applications/${applicationId}/briefs/${briefId}/approvals`, fetchFn, { decision });
+}
+
+export function listModernizationCases(id: string, fetchFn: typeof fetch): Promise<ModernizationCase[]> {
+	return getJson(`/v1/applications/${id}/modernization-cases`, fetchFn);
+}
+
+export function createModernizationCase(
+	applicationId: string,
+	payload: {
+		technology_stack: string;
+		hosting: string;
+		release_process: string;
+		scale: string;
+		pain_points: string;
+	},
+	fetchFn: typeof fetch
+): Promise<ModernizationCase> {
+	return postJson(`/v1/applications/${applicationId}/modernization-cases`, fetchFn, payload);
+}
+
+export function listModernizationRecommendations(
+	id: string,
+	fetchFn: typeof fetch
+): Promise<ModernizationRecommendation[]> {
+	return getJson(`/v1/applications/${id}/modernization-recommendations`, fetchFn);
+}
+
+export function createModernizationRecommendation(
+	applicationId: string,
+	caseId: string,
+	fetchFn: typeof fetch
+): Promise<ModernizationRecommendation> {
+	return postJson(
+		`/v1/applications/${applicationId}/modernization-recommendations?case_id=${caseId}`,
+		fetchFn
+	);
 }
