@@ -16,6 +16,7 @@ from app.models import (  # noqa: E402,F401
     approval,
     audit,
     brief,
+    code_review,
     dependency,
     evidence,
     finding,
