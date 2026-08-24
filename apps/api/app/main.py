@@ -3,6 +3,8 @@ from fastapi import FastAPI
 from app.logging_config import configure_logging
 from app.middleware.correlation import correlation_id_middleware
 from app.routers import (
+    agent_versions,
+    agents,
     applications,
     approvals,
     architecture_decisions,
@@ -40,3 +42,5 @@ app.include_router(documentation_drafts.router)
 app.include_router(architecture_decisions.router)
 app.include_router(architecture_reviews.router)
 app.include_router(diagrams.router)
+app.include_router(agents.router)
+app.include_router(agent_versions.router)

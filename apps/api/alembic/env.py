@@ -12,6 +12,8 @@ sys.path.append(str(Path(__file__).resolve().parents[1]))
 
 from app.config import settings  # noqa: E402
 from app.models import (  # noqa: E402,F401
+    agent_definition,
+    agent_version,
     application,
     approval,
     architecture_decision,
