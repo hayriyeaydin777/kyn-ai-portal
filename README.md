@@ -32,6 +32,12 @@ See `SECURITY.md` and `DATA_POLICY.md` for constraints that apply to all code in
    ```
 
 3. **Set up the API (Python/FastAPI)**
+
+   > If VS Code shows a notification like *"An environment file is configured but
+   > terminal environment injection is disabled"* after `cp .env.example .env`, that's
+   > just an informational popup from the Python extension — it's safe to dismiss
+   > and does not indicate a failed command.
+
    ```bash
    cd apps/api
    python3 -m venv .venv
