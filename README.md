@@ -62,9 +62,16 @@ See `SECURITY.md` and `DATA_POLICY.md` for constraints that apply to all code in
    cd ../..                           # apps/web -> repo root
    ```
 
-5. **Set up the policy service (.NET)** — run from the repo root; no extra setup needed
-   beyond the SDK. `dotnet run` (used in the next section) restores packages automatically
-   on first run, from inside `services/policy-service`.
+5. **Set up the policy service (.NET)** — starts at repo root, ends back at repo root
+   ```bash
+   cd services/policy-service          # repo root -> services/policy-service
+   dotnet restore                      # downloads NuGet packages (one-time)
+   cd ../..                            # services/policy-service -> repo root
+   ```
+   > `dotnet run` only works when run **from inside `services/policy-service`** — running
+   > it from the repo root (or any other folder) fails with `Couldn't find a project to run`.
+   > The `make policy` command in the next section already `cd`s there for you, so you don't
+   > need to run `dotnet run` manually.
 
 ## Running the app
 
