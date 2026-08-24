@@ -4,15 +4,15 @@ Tracked improvements suggested during build-out but intentionally skipped/deferr
 to save Copilot tokens and avoid scope creep. Revisit before the demo if token
 budget allows.
 
-## HIGH PRIORITY before any demo — UI does not match the `materials/` mockups
-Every page built so far (Stages 1-8) is plain, unstyled HTML with default browser
-styling and no layout/CSS work. The `materials/design/ui-mockups/*.png` and the
-architecture montage were used only as directional references (which modules to
-build), never as an implementation target. This is the single biggest gap between
-"functionally complete" and "demo-ready." Needs a dedicated UI/styling pass:
-component layout, a CSS framework or design system, navigation/shell, and passes
-on each page (applications list/detail, workspace, governance) to visually align
-with the mockups. Not started yet — flag before scheduling any live demo.
+## UI does not pixel-match the `materials/` mockups (partially addressed)
+A small, cheap styling pass has been done: shared layout (`+layout.svelte`) with a
+persistent top nav, plus `app.css` (design tokens, typography, form/button/card/list
+styling). This makes the app look coherent and presentable, but it is **not** a
+pixel-accurate implementation of the `materials/design/ui-mockups/*.png` mockups —
+those remain directional references only. Still not done: per-page visual polish
+(data tables instead of plain lists, dashboard-style layout, badges/status colors
+matching the mockups, responsive/mobile layout). Revisit if more time/budget allows
+before a live demo.
 
 ## From Stage 4 (AI Briefing)
 - **S4-10 — Real Claude provider adapter**: `LLMProvider` interface and
