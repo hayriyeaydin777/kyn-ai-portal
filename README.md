@@ -22,6 +22,11 @@ See `SECURITY.md` and `DATA_POLICY.md` for constraints that apply to all code in
    ```
 
 2. **Start the databases** (MySQL + Redis)
+
+   If you're on macOS using Colima instead of Docker Desktop, make sure the Colima VM is
+   running first (`colima status`, then `colima start` if needed) — otherwise `docker`
+   commands fail with `failed to connect to the docker API ... no such file or directory`.
+
    ```bash
    make up
    ```
