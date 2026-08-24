@@ -75,23 +75,40 @@ See `SECURITY.md` and `DATA_POLICY.md` for constraints that apply to all code in
 
 ## Running the app
 
-You need **3 separate terminal windows/tabs**, each one starting at the **repo root**
-(`kyn-ai-portal/`). Run one command per terminal — leave all three running at the same time:
+> ⚠️ **Run every `make` command from the repository root** (`kyn-ai-portal/`) — the same
+> folder that contains this `README.md` and the `Makefile`. If you `cd`ed into `apps/api`,
+> `apps/web`, or `services/policy-service` for setup, run `cd` (with no arguments, or
+> `cd ~/path/to/kyn-ai-portal`) to go back to the repo root **before** running any `make`
+> command below. Running `make api` / `make policy` / `make web` from inside a subfolder
+> fails with `make: *** No rule to make target ...`.
+>
+> Check where you are at any time with `pwd` — it should end in `.../kyn-ai-portal`
+> (not `.../kyn-ai-portal/apps/api`, etc.).
 
-| Terminal | Command | URL |
-|---|---|---|
-| 1 | `make api` | FastAPI on http://localhost:8000 |
-| 2 | `make policy` | ASP.NET Core policy service — check its console output for the exact port (commonly http://localhost:5142) |
-| 3 | `make web` | SvelteKit dev server on http://localhost:5173 |
+You need **3 separate terminal windows/tabs**, each one starting at the **repo root**.
+Run one command per terminal — leave all three running at the same time:
 
-None of the `make` commands require you to `cd` anywhere first — always run them from the
-repo root, and the Makefile `cd`s into the right subfolder internally.
+| Terminal | First, confirm you're at the repo root | Then run | URL |
+|---|---|---|---|
+| 1 | `pwd` should print `.../kyn-ai-portal` | `make api` | FastAPI on http://localhost:8000 |
+| 2 | `pwd` should print `.../kyn-ai-portal` | `make policy` | ASP.NET Core policy service — check its console output for the exact port (commonly http://localhost:5142) |
+| 3 | `pwd` should print `.../kyn-ai-portal` | `make web` | SvelteKit dev server on http://localhost:5173 |
 
 Once all three are running, open **http://localhost:5173** in a browser. Use `make down`
 (from the repo root, in any terminal) to stop MySQL/Redis when done — you can leave the
 `make api` / `make policy` / `make web` terminals running or stop them with `Ctrl+C`.
 
 By default `AI_PROVIDER=fake` in `apps/api/.env` — the app runs fully functional deterministic demos (assessments, briefs, modernization advisor, code review, etc.) with **zero AI/LLM token cost**. Set `AI_PROVIDER=claude` and provide real credentials only if you intend to wire up the real Claude provider adapter.
+
+## Current UI is functional, not final
+
+The pages you see right now (plain unstyled HTML/links) reflect **backend-first
+development** — every stage so far focused on getting the data model, API, and business
+logic correct and fully tested, not on visual design. The polished mockups under
+`materials/` (not tracked in this repo) were used as *directional references* for what
+modules to build, not as a pixel-accurate design spec to implement yet. A dedicated
+styling/UI pass has not happened. See `docs/DEFERRED-ENHANCEMENTS.md` for what's tracked
+as not-yet-done.
 
 ## Running tests
 
