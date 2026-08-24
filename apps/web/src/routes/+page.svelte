@@ -1,5 +1,5 @@
 <h1>Resilience Operations & AI Engineering Portal</h1>
-<p>Web app shell — Stage 1 scaffold.</p>
-<p><a href="/applications">Application Profiles</a></p>
-<p><a href="/workspace">AI Engineering Workspace</a></p>
-<p><a href="/governance">Architecture Governance</a></p>
+<p class="muted">
+	A synthetic portfolio application demonstrating modernization advisory, deterministic
+	assessment, AI-assisted (fake-provider) briefing, and architecture governance workflows.
+</p>
