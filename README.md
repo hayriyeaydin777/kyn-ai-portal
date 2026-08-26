@@ -2,8 +2,10 @@
 
 **Resilience Operations & AI Engineering Portal** — a synthetic portfolio application.
 
-Planning materials (architecture docs, ADRs, prompts, mockups) live locally under
-`materials/` and are intentionally not tracked in this repository.
+Planning materials (architecture docs, ADRs, prompts, mockups) are tracked under
+[`docs/`](docs/): [`docs/Planning/`](docs/Planning/) for architecture/ADR docs,
+[`docs/Prompts/`](docs/Prompts/) for the build prompts, and [`docs/Designs/`](docs/Designs/)
+for UI mockups.
 
 📄 See [`SECURITY.md`](SECURITY.md) and [`DATA_POLICY.md`](DATA_POLICY.md) for constraints
 that apply to all code in this repo.
@@ -162,10 +164,10 @@ root, in any terminal) to stop MySQL/Redis when done.
 
 The app has a Tailwind-styled shell with a responsive sidebar
 ([`Sidebar.svelte`](apps/web/src/lib/Sidebar.svelte)) and shared design tokens — a first
-pass at matching the `materials/` mockups (not tracked in this repo). Per-page visual
+pass at matching the [`docs/Designs/`](docs/Designs/) mockups. Per-page visual
 polish (data tables, dashboard layouts, status badges) is still incomplete — see
-[`docs/DEFERRED-ENHANCEMENTS.md`](docs/DEFERRED-ENHANCEMENTS.md) for what's tracked as
-not-yet-done.
+[`docs/Planning/DEFERRED-ENHANCEMENTS.md`](docs/Planning/DEFERRED-ENHANCEMENTS.md) for what's
+tracked as not-yet-done.
 
 ---
 
