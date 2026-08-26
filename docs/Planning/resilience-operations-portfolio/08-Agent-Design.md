@@ -1,0 +1,2 @@
+# 08. Agent Design
+A shared constrained orchestration runtime serves configured agents. Workflow: authorize request; classify intent; select allowlisted tools; retrieve structured evidence; invoke provider; validate schema and citations; run safety/evaluation checks; create draft; require human review; audit the outcome. Automated tests use a deterministic fake provider. No agent may alter code, architecture status, findings, or external systems without explicit approval.

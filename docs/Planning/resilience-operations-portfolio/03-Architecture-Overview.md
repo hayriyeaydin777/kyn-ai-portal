@@ -1,0 +1,2 @@
+# 03. Architecture Overview
+SvelteKit provides the experience. FastAPI owns business APIs, persistence coordination, background jobs, and orchestration. ASP.NET Core evaluates versioned deterministic readiness policies without direct database access. MySQL stores transactional state. Redis supports queued work. Agents are configurations over a shared orchestration runtime, not separate deployables by default. AI providers are adapters behind one interface. Evaluation, approval, audit, security, and observability are cross-cutting capabilities.

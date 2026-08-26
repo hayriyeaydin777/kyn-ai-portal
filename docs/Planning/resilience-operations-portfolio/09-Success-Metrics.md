@@ -1,0 +1,2 @@
+# 09. Success Metrics
+Portfolio targets: all deterministic findings trace to rules/evidence; all material generated claims use known evidence; zero accepted unknown citations; zero side effects without approval; critical workflows have E2E tests; all mutation APIs validate authorization/input; migrations replay cleanly; contract checks detect breaking changes; critical pages pass accessibility checks; correlation propagates across services; failed model/tool calls are observable; no secrets or confidential data.
