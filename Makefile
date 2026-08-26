@@ -1,4 +1,4 @@
-.PHONY: up down web api policy dev
+.PHONY: up down web api policy dev dev-all
 
 up:
 	docker compose -f infra/compose/docker-compose.yml up -d
@@ -17,3 +17,6 @@ policy:
 
 dev: up
 	@echo "Infra started. Run 'make web', 'make api', 'make policy' in separate terminals."
+
+dev-all:
+	./scripts/dev-all.sh
