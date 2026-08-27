@@ -25,6 +25,7 @@
 {/if}
 
 <h2>Evidence</h2>
+<p><a href={`/applications/${data.application.id}/evidence`}>View full evidence page</a></p>
 {#if data.evidence.length === 0}
 	<p>No evidence recorded.</p>
 {:else}
