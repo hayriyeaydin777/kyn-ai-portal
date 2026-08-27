@@ -29,6 +29,7 @@ task. Each row below is one approval-sized unit of work (one TODO ID).
 |---|---|---|---|
 | UI-P1-1 | Restructure `Sidebar.svelte` into 6 grouped sections (Recovery Readiness, AI Workspace, Architecture, Agent Platform, Evaluation, Operations) per mockups, linking to routes below (create as they land) | ⬜ No | ✅ done |
 | UI-P1-2 | Add top-bar search input (non-functional placeholder for now) + icon stubs (notifications/help/settings/user) | ⬜ No | ✅ done |
+| UI-P1-3 | Adopt shadcn-svelte (bits-ui@0.21 + tailwind-variants, Svelte-4 compatible) + lucide-svelte icon set across `Sidebar.svelte`/header; add `Footer.svelte`; wire top-bar search for real against `listApplications` (Cmd/Ctrl+K, dropdown of matches); notifications/help/profile stay visual-only dropdowns; add sidebar collapse toggle | ⬜ No | ✅ done |
 
 ## Phase 2 — Recovery Readiness
 
@@ -51,6 +52,7 @@ task. Each row below is one approval-sized unit of work (one TODO ID).
 | UI-P3-4 | Test Generator | `/workspace/test-generator` | `test_generations` router (exists) | ✅ done |
 | UI-P3-5 | Documentation | `/workspace/documentation` | `documentation_drafts` router (exists) | ✅ done |
 | UI-P3-6 | Prompt Lab | `/workspace/prompt-lab` | none exists — **stub, client-side only, no persistence** | ⏸️ stub only |
+| UI-P3-7 | Workspace Home dashboard (replaces old placeholder `/workspace` demo form) | `/workspace` | none — **stub, static sample Recent Runs/Approval Queue/Provider Status/Quick Stats/System Notice**, real links to the 5 built tools above | ✅ done |
 
 ## Phase 4 — Architecture
 
