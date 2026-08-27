@@ -10,9 +10,9 @@
 
 <div class="min-h-screen bg-paper">
 	<Sidebar />
-	<div class="flex min-h-screen flex-col md:pl-72">
+	<div class="flex min-h-screen flex-col md:pl-64">
 		<AppHeader applications={data.applications} />
-		<main class="mx-auto w-full max-w-7xl flex-1 px-6 py-8 md:px-10 md:py-12">
+		<main class="mx-auto w-full max-w-7xl flex-1 px-5 py-6 md:px-8 md:py-8">
 			<slot />
 		</main>
 		<Footer />

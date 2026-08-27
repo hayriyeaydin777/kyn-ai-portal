@@ -99,13 +99,13 @@
 <svelte:window on:keydown={(event) => event.key === 'Escape' && (open = false)} />
 
 <button
-	class="fixed left-4 top-4 z-40 inline-flex h-11 w-11 items-center justify-center rounded-lg border border-line bg-white text-ink shadow-sm md:hidden"
+	class="fixed left-4 top-4 z-40 inline-flex h-10 w-10 items-center justify-center rounded-lg border border-line bg-white text-ink shadow-sm md:hidden"
 	type="button"
 	aria-label="Open navigation"
 	aria-expanded={open}
 	on:click={() => (open = true)}
 >
-	<MenuIcon class="h-5 w-5" />
+	<MenuIcon class="h-4 w-4" />
 </button>
 
 {#if open}
@@ -119,60 +119,56 @@
 
 <aside
 	class:translate-x-0={open}
-	class:md:w-72={!collapsed}
-	class:md:w-[4.5rem]={collapsed}
-	class="fixed inset-y-0 left-0 z-50 flex w-72 -translate-x-full flex-col border-r border-line bg-white px-5 py-6 transition-[transform,width] duration-200 md:translate-x-0"
+	class:md:w-64={!collapsed}
+	class:md:w-[4.25rem]={collapsed}
+	class="fixed inset-y-0 left-0 z-50 flex w-64 -translate-x-full flex-col bg-[#0b1220] px-3 py-4 text-slate-300 transition-[transform,width] duration-200 md:translate-x-0"
 	aria-label="Primary navigation"
 >
-	<div class="flex items-center justify-between border-b border-line pb-6">
-		<a href="/" class="flex min-w-0 items-center gap-3 no-underline" on:click={() => (open = false)}>
-			<span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-coral text-white">
-				<ShieldCheckIcon class="h-5 w-5" />
+	<div class="flex items-center justify-between border-b border-white/10 px-1 pb-4">
+		<a href="/" class="flex min-w-0 items-center gap-2.5 no-underline" on:click={() => (open = false)}>
+			<span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-coral text-white">
+				<ShieldCheckIcon class="h-4 w-4" />
 			</span>
 			{#if !collapsed}
 				<span class="min-w-0">
-					<strong class="block truncate text-sm font-extrabold leading-tight tracking-tight text-ink">Resilience Operations &amp;</strong>
-					<span class="block truncate text-xs font-medium uppercase tracking-[0.14em] text-slate-500">AI Engineering Portal</span>
+					<strong class="block truncate text-[0.8rem] font-bold leading-tight text-white">Resilience Operations &amp;</strong>
+					<span class="block truncate text-[0.65rem] font-medium uppercase tracking-[0.1em] text-slate-400">AI Engineering Portal</span>
 				</span>
 			{/if}
 		</a>
-		<button class="shrink-0 text-slate-500 md:hidden" type="button" aria-label="Close navigation" on:click={() => (open = false)}>
-			<XIcon class="h-5 w-5" />
+		<button class="shrink-0 text-slate-400 md:hidden" type="button" aria-label="Close navigation" on:click={() => (open = false)}>
+			<XIcon class="h-4 w-4" />
 		</button>
 	</div>
 
-	<nav class="mt-6 flex-1 space-y-5 overflow-y-auto overflow-x-hidden pr-1">
+	<nav class="no-scrollbar mt-3 flex-1 space-y-2.5 overflow-y-auto overflow-x-hidden">
 		{#each navGroups as group}
 			<div>
 				{#if !collapsed}
-					<p class="mb-2 px-3 text-[0.68rem] font-bold uppercase tracking-[0.18em] text-slate-400">{group.title}</p>
+					<p class="mb-0.5 px-2 text-[0.62rem] font-bold uppercase tracking-[0.14em] text-slate-500">{group.title}</p>
 				{/if}
-				<div class="space-y-1">
+				<div class="space-y-0.5">
 					{#each group.items as item}
 						{#if item.soon}
 							<span
-								class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-300"
+								class="flex items-center gap-2.5 rounded-md px-2 py-1 text-[0.8rem] font-medium text-slate-600"
 								title="Coming soon"
 							>
-								<span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-paper">
-									<svelte:component this={item.icon} class="h-4 w-4" />
-								</span>
+								<svelte:component this={item.icon} class="h-3.5 w-3.5 shrink-0" />
 								{#if !collapsed}
 									<span class="truncate">{item.label}</span>
-									<span class="ml-auto shrink-0 rounded-full bg-paper px-2 py-0.5 text-[0.62rem] font-bold uppercase tracking-wide text-slate-400">Soon</span>
+									<span class="ml-auto shrink-0 rounded-full bg-white/5 px-1.5 py-0.5 text-[0.58rem] font-bold uppercase tracking-wide text-slate-500">Soon</span>
 								{/if}
 							</span>
 						{:else}
 							<a
 								href={item.href}
 								class:active={item.href === '/' ? currentPath === '/' : currentPath.startsWith(item.href)}
-								class="sidebar-link group flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-600 no-underline transition-colors hover:bg-paper hover:text-teal"
+								class="sidebar-link group flex items-center gap-2.5 rounded-md px-2 py-1 text-[0.8rem] font-medium text-slate-300 no-underline transition-colors hover:bg-white/5 hover:text-white"
 								on:click={() => (open = false)}
 								title={collapsed ? item.label : undefined}
 							>
-								<span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-paper text-teal group-[.active]:bg-white/15 group-[.active]:text-white">
-									<svelte:component this={item.icon} class="h-4 w-4" />
-								</span>
+								<svelte:component this={item.icon} class="h-3.5 w-3.5 shrink-0 text-slate-400 group-[.active]:text-white" />
 								{#if !collapsed}
 									<span class="truncate">{item.label}</span>
 								{/if}
@@ -184,19 +180,12 @@
 		{/each}
 	</nav>
 
-	{#if !collapsed}
-		<div class="mt-4 rounded-xl bg-teal p-4 text-white">
-			<p class="text-[0.68rem] font-bold uppercase tracking-[0.16em] text-white/60">System status</p>
-			<div class="mt-3 flex items-center gap-2 text-sm font-semibold"><span class="h-2 w-2 rounded-full bg-emerald-300"></span> All services healthy</div>
-		</div>
-	{/if}
-
 	<button
 		type="button"
-		class="mt-4 hidden items-center justify-center gap-2 rounded-lg border border-line px-3 py-2 text-xs font-semibold text-slate-500 hover:bg-paper md:flex"
+		class="mt-3 hidden shrink-0 items-center justify-center gap-2 rounded-md border border-white/10 px-2 py-1.5 text-xs font-medium text-slate-400 hover:bg-white/5 hover:text-white md:flex"
 		on:click={() => (collapsed = !collapsed)}
 	>
-		<ChevronsLeftIcon class={collapsed ? 'h-4 w-4 rotate-180 transition-transform' : 'h-4 w-4 transition-transform'} />
+		<ChevronsLeftIcon class={collapsed ? 'h-3.5 w-3.5 rotate-180 transition-transform' : 'h-3.5 w-3.5 transition-transform'} />
 		{#if !collapsed}Collapse{/if}
 	</button>
 </aside>

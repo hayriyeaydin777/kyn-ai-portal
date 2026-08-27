@@ -69,14 +69,14 @@
 
 <svelte:window on:keydown={handleWindowKeydown} />
 
-<header class="flex h-20 items-center justify-between gap-4 border-b border-line bg-white px-6 pl-20 md:px-10 md:pl-10">
-	<div class="shrink-0">
-		<p class="text-[0.68rem] font-bold uppercase tracking-[0.2em] text-coral">Resilience operations</p>
-		<p class="mt-1 text-sm font-medium text-slate-500">AI engineering control center</p>
+<header class="flex h-14 items-center justify-between gap-4 border-b border-line bg-white px-4 pl-16 md:px-6 md:pl-6">
+	<div class="hidden shrink-0 sm:block">
+		<p class="text-[0.62rem] font-bold uppercase tracking-[0.16em] text-coral">Resilience operations</p>
+		<p class="text-xs font-medium text-slate-500">AI engineering control center</p>
 	</div>
 
 	<div class="relative hidden max-w-md flex-1 md:block" bind:this={searchWrapper}>
-		<div class="flex items-center gap-2 rounded-lg border border-line bg-paper px-3 py-2 text-sm text-slate-500 focus-within:border-teal">
+		<div class="flex items-center gap-2 rounded-lg border border-line bg-paper px-2.5 py-1.5 text-sm text-slate-500 focus-within:border-teal">
 			<SearchIcon class="h-4 w-4 shrink-0" />
 			<input
 				bind:this={searchInput}

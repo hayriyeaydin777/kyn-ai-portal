@@ -100,33 +100,33 @@
 	}
 </script>
 
-<div class="mb-6 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+<div class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
 	<div>
-		<h1 class="text-2xl font-extrabold text-ink">AI Workspace</h1>
-		<p class="mt-1 text-sm text-slate-500">
+		<h1 class="text-xl font-extrabold text-ink">AI Workspace</h1>
+		<p class="mt-0.5 text-xs text-slate-500">
 			AI-powered tools to build, modernize, test, and improve applications with confidence.
 		</p>
 	</div>
 	<div class="flex shrink-0 gap-2">
 		<Button variant="outline">
-			<SettingsIcon class="h-4 w-4" />
+			<SettingsIcon class="h-3.5 w-3.5" />
 			Workspace settings
 		</Button>
 		<Button>
-			<PlusIcon class="h-4 w-4" />
+			<PlusIcon class="h-3.5 w-3.5" />
 			New AI Run
 		</Button>
 	</div>
 </div>
 
-<div class="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
+<div class="mb-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
 	{#each tools as tool}
 		<Card class="flex flex-col">
 			<CardHeader>
-				<span class={`flex h-10 w-10 items-center justify-center rounded-lg ${tool.accent}`}>
-					<svelte:component this={tool.icon} class="h-5 w-5" />
+				<span class={`flex h-8 w-8 items-center justify-center rounded-lg ${tool.accent}`}>
+					<svelte:component this={tool.icon} class="h-4 w-4" />
 				</span>
-				<CardTitle class="mt-2">{tool.name}</CardTitle>
+				<CardTitle class="mt-1.5">{tool.name}</CardTitle>
 				<CardDescription>{tool.description}</CardDescription>
 			</CardHeader>
 			<CardFooter class="mt-auto border-t-0 pt-0">
@@ -143,7 +143,7 @@
 	{/each}
 </div>
 
-<div class="mb-8 grid grid-cols-1 gap-6 lg:grid-cols-3">
+<div class="mb-6 grid grid-cols-1 gap-5 lg:grid-cols-3">
 	<Card class="lg:col-span-2">
 		<CardHeader class="flex-row items-center justify-between">
 			<div>
@@ -192,12 +192,12 @@
 				<CardDescription>Sample data — approvals aren't wired to a backend yet.</CardDescription>
 			</div>
 		</CardHeader>
-		<CardContent class="space-y-3">
+		<CardContent class="space-y-2">
 			{#each approvalQueue as item}
-				<div class="flex items-center justify-between gap-3 rounded-lg border border-line px-3 py-2">
+				<div class="flex items-center justify-between gap-3 rounded-lg border border-line px-2.5 py-1.5">
 					<div class="min-w-0">
-						<p class="truncate text-sm font-semibold text-ink">{item.request}</p>
-						<p class="text-xs text-slate-400">{item.type} · {item.by} · {item.age}</p>
+						<p class="truncate text-xs font-semibold text-ink">{item.request}</p>
+						<p class="text-[0.68rem] text-slate-400">{item.type} · {item.by} · {item.age}</p>
 					</div>
 					<Badge variant={riskVariant(item.risk)}>{item.risk}</Badge>
 				</div>
@@ -209,25 +209,25 @@
 	</Card>
 </div>
 
-<div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
+<div class="grid grid-cols-1 gap-5 lg:grid-cols-3">
 	<Card>
 		<CardHeader>
 			<CardTitle>Provider Status</CardTitle>
 		</CardHeader>
-		<CardContent class="space-y-4">
+		<CardContent class="space-y-2.5">
 			<div class="flex items-center justify-between">
-				<p class="text-sm font-semibold text-ink">Fake Provider (v1)</p>
+				<p class="text-xs font-semibold text-ink">Fake Provider (v1)</p>
 				<Badge variant="success">Active</Badge>
 			</div>
-			<p class="text-xs text-slate-500">Model: Fake LLM v1.0 · Deterministic</p>
-			<p class="text-xs text-slate-500">Environment: Development</p>
-			<div class="grid grid-cols-2 gap-3 border-t border-line pt-3 text-xs">
+			<p class="text-[0.68rem] text-slate-500">Model: Fake LLM v1.0 · Deterministic</p>
+			<p class="text-[0.68rem] text-slate-500">Environment: Development</p>
+			<div class="grid grid-cols-2 gap-2.5 border-t border-line pt-2.5 text-[0.68rem]">
 				<div><p class="text-slate-400">Requests today</p><p class="font-semibold text-ink">128</p></div>
 				<div><p class="text-slate-400">Tokens</p><p class="font-semibold text-ink">25,642</p></div>
 				<div><p class="text-slate-400">Avg latency</p><p class="font-semibold text-ink">1.42s</p></div>
 				<div><p class="text-slate-400">Error rate</p><p class="font-semibold text-ink">0%</p></div>
 			</div>
-			<p class="text-xs text-slate-400">Last health check: 10:25:33 AM · Healthy</p>
+			<p class="text-[0.68rem] text-slate-400">Last health check: 10:25:33 AM · Healthy</p>
 		</CardContent>
 		<CardFooter>
 			<Button variant="ghost" size="sm" disabled class="w-full justify-center">View metrics</Button>
@@ -238,17 +238,17 @@
 		<CardHeader>
 			<CardTitle>Quick Stats</CardTitle>
 		</CardHeader>
-		<CardContent class="grid grid-cols-2 gap-4">
+		<CardContent class="grid grid-cols-2 gap-2.5">
 			{#each quickStats as stat}
-				<div class="rounded-lg border border-line p-3">
-					<p class="text-xs text-slate-400">{stat.label}</p>
-					<p class="mt-1 text-lg font-extrabold text-ink">{stat.value}</p>
+				<div class="rounded-lg border border-line p-2.5">
+					<p class="text-[0.68rem] text-slate-400">{stat.label}</p>
+					<p class="mt-0.5 text-base font-extrabold text-ink">{stat.value}</p>
 					<div class="mt-1 flex items-center justify-between gap-2">
-						<span class="flex items-center gap-1 text-[0.68rem] font-semibold text-emerald-600">
+						<span class="flex items-center gap-1 text-[0.62rem] font-semibold text-emerald-600">
 							<TrendingUpIcon class="h-3 w-3" />
 							{stat.delta}
 						</span>
-						<Sparkline points={stat.points} width={40} height={16} />
+						<Sparkline points={stat.points} width={36} height={14} />
 					</div>
 				</div>
 			{/each}
@@ -257,14 +257,14 @@
 
 	<Card class="border-teal/20 bg-teal/5">
 		<CardHeader>
-			<CardTitle class="flex items-center gap-2 text-teal">
-				<ShieldCheckIcon class="h-4 w-4" />
+			<CardTitle class="flex items-center gap-1.5 text-teal">
+				<ShieldCheckIcon class="h-3.5 w-3.5" />
 				System Notice
 			</CardTitle>
 		</CardHeader>
 		<CardContent>
-			<p class="text-sm font-semibold text-ink">Synthetic Data Only</p>
-			<p class="mt-2 text-xs text-slate-600">
+			<p class="text-xs font-semibold text-ink">Synthetic Data Only</p>
+			<p class="mt-1.5 text-[0.68rem] leading-snug text-slate-600">
 				All data in this environment is 100% synthetic and created for demonstration and portfolio
 				purposes only. No real customer, company, or personal data is used.
 			</p>

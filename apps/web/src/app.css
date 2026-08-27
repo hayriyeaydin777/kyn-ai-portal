@@ -41,4 +41,13 @@ select:focus-visible {
 	.sidebar-link.active:hover {
 		@apply bg-teal text-white;
 	}
+
+	.no-scrollbar {
+		scrollbar-width: none;
+		-ms-overflow-style: none;
+	}
+
+	.no-scrollbar::-webkit-scrollbar {
+		display: none;
+	}
 }
