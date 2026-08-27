@@ -25,10 +25,10 @@ task. Each row below is one approval-sized unit of work (one TODO ID).
 
 ## Phase 1 — Sidebar restructure
 
-| ID | Task | Backend needed? |
-|---|---|---|
-| UI-P1-1 | Restructure `Sidebar.svelte` into 6 grouped sections (Recovery Readiness, AI Workspace, Architecture, Agent Platform, Evaluation, Operations) per mockups, linking to routes below (create as they land) | ⬜ No |
-| UI-P1-2 | Add top-bar search input (non-functional placeholder for now) + icon stubs (notifications/help/settings/user) | ⬜ No |
+| ID | Task | Backend needed? | Status |
+|---|---|---|---|
+| UI-P1-1 | Restructure `Sidebar.svelte` into 6 grouped sections (Recovery Readiness, AI Workspace, Architecture, Agent Platform, Evaluation, Operations) per mockups, linking to routes below (create as they land) | ⬜ No | ✅ done |
+| UI-P1-2 | Add top-bar search input (non-functional placeholder for now) + icon stubs (notifications/help/settings/user) | ⬜ No | ⬜ |
 
 ## Phase 2 — Recovery Readiness
 
