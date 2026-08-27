@@ -45,7 +45,7 @@ task. Each row below is one approval-sized unit of work (one TODO ID).
 
 | ID | Page | Route | Backend | Status |
 |---|---|---|---|---|
-| UI-P3-1 | Brief Generator | `/workspace/brief-generator` | `briefs` router (exists) | ⬜ |
+| UI-P3-1 | Brief Generator | `/workspace/brief-generator` | `briefs` router (exists) | ✅ done |
 | UI-P3-2 | Modernization Advisor | `/applications/[id]/modernization` (exists) | `modernization_cases`/`modernization_recommendations` (exists) | ✅ done |
 | UI-P3-3 | Code Review | `/workspace/code-review` | `code_reviews` router (exists) | ⬜ |
 | UI-P3-4 | Test Generator | `/workspace/test-generator` | `test_generations` router (exists) | ⬜ |
