@@ -13,6 +13,7 @@
 <p><a href={`/applications/${data.application.id}/modernization`}>Modernization Advisor</a></p>
 
 <h2>Dependencies</h2>
+<p><a href={`/applications/${data.application.id}/dependencies`}>View full dependencies page</a></p>
 {#if data.dependencies.length === 0}
 	<p>No dependencies recorded.</p>
 {:else}
