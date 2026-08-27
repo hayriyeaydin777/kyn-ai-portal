@@ -71,7 +71,7 @@
 
 <svelte:window on:keydown={handleWindowKeydown} />
 
-<header class="flex h-14 items-center justify-between gap-4 border-b border-line bg-white px-4 pl-16 md:px-6 md:pl-4">
+<header class="flex h-14 shrink-0 items-center justify-between gap-4 border-b border-line bg-white px-4 pl-16 md:px-6 md:pl-4">
 	<button
 		type="button"
 		class="hidden h-9 w-9 shrink-0 items-center justify-center rounded-lg text-slate-500 hover:bg-paper hover:text-ink md:flex"

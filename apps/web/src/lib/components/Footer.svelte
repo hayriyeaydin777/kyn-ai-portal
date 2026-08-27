@@ -1,4 +1,4 @@
-<footer class="border-t border-line bg-white px-5 py-4 text-xs text-slate-500 md:px-8">
+<footer class="shrink-0 border-t border-line bg-white px-5 py-4 text-xs text-slate-500 md:px-8">
 	<div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 sm:flex-row">
 		<p>
 			<span class="font-semibold text-ink">ROAIP</span> v2.0.0 · © 2026 Synthetic Systems Lab. All

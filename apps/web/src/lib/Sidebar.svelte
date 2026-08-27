@@ -159,7 +159,7 @@
 				{#if !collapsed}
 					<button
 						type="button"
-						class="flex w-full items-center justify-between rounded-md px-2 py-1 text-[0.68rem] font-bold uppercase tracking-[0.12em] text-slate-500 hover:text-slate-300"
+						class="flex w-full items-center justify-between rounded-md px-2 py-1 text-[0.64rem] font-semibold uppercase tracking-[0.12em] text-slate-500 hover:text-slate-300"
 						on:click={() => toggleGroup(group.title)}
 					>
 						{group.title}
@@ -175,24 +175,34 @@
 						{#each group.items as item}
 							{#if item.soon}
 								<span
+									class:mx-auto={collapsed}
+									class:h-9={collapsed}
+									class:w-9={collapsed}
 									class:justify-center={collapsed}
+									class:w-full={!collapsed}
+									class:gap-2.5={!collapsed}
 									class:px-2={!collapsed}
-									class="flex items-center gap-2.5 rounded-lg py-1.5 text-sm font-medium text-slate-600"
+									class="flex items-center rounded-lg py-1.5 text-[0.8rem] font-normal text-slate-600"
 									title="Coming soon"
 								>
 									<svelte:component this={item.icon} class="h-4 w-4 shrink-0" />
 									{#if !collapsed}
 										<span class="truncate">{item.label}</span>
-										<span class="ml-auto shrink-0 rounded-full bg-white/5 px-1.5 py-0.5 text-[0.58rem] font-bold uppercase tracking-wide text-slate-500">Soon</span>
+										<span class="ml-auto shrink-0 rounded-full bg-white/5 px-1.5 py-0.5 text-[0.58rem] font-semibold uppercase tracking-wide text-slate-500">Soon</span>
 									{/if}
 								</span>
 							{:else}
 								<a
 									href={item.href}
 									class:active={item.href === '/' ? currentPath === '/' : currentPath.startsWith(item.href)}
+									class:mx-auto={collapsed}
+									class:h-9={collapsed}
+									class:w-9={collapsed}
 									class:justify-center={collapsed}
+									class:w-full={!collapsed}
+									class:gap-2.5={!collapsed}
 									class:px-2={!collapsed}
-									class="sidebar-link group flex items-center gap-2.5 rounded-lg py-1.5 text-sm font-medium text-slate-300 no-underline transition-colors hover:bg-white/5 hover:text-white"
+									class="sidebar-link group flex items-center rounded-lg py-1.5 text-[0.8rem] font-normal text-slate-300 no-underline transition-colors hover:bg-white/5 hover:text-white"
 									on:click={() => (open = false)}
 									title={collapsed ? item.label : undefined}
 								>
