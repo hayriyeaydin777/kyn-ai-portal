@@ -81,6 +81,23 @@ task. Each row below is one approval-sized unit of work (one TODO ID).
 | UI-P6-5 | Policies | `/operations/policies` | policy-service is a separate .NET service, not proxied to web — **stub for now** | ⏸️ stub only |
 | UI-P6-6 | Settings | `/operations/settings` | none exists — **stub, static form, no save** | ⏸️ stub only |
 
+## Phase 7 — Workspace Home visual polish
+
+Pixel-level pass on `/workspace` (typography, color, icons, buttons) plus two
+new floating UI affordances now that the shell has a sticky header/footer.
+No backend involved — visual/UX only.
+
+| ID | Task | Backend needed? | Status |
+|---|---|---|---|
+| UI-P7-1 | Typography: add a proper webfont (Inter, self-hosted via `@fontsource` — no external CDN calls) replacing the `Avenir Next` stack; define a small consistent type scale (page title / card title / body / label) in `tailwind.config.cjs` and apply it across Sidebar, AppHeader, Footer, and the Workspace Home page | ⬜ No | ⬜ |
+| UI-P7-2 | Color system: extend `tailwind.config.cjs` with named accent tokens per tool (rocket/code/checklist/doc/scale/chat) and neutral surface tokens, replacing ad-hoc `bg-*-100 text-*-600` combinations sprinkled through the dashboard | ⬜ No | ⬜ |
+| UI-P7-3 | Tool cards: redesign the 6 icon tiles as larger rounded-2xl gradient/solid tiles with soft shadow, and restyle "Launch" as a tinted pill button per tool's accent color (rounded-full, hover state), matching the reference screenshot | ⬜ No | ⬜ |
+| UI-P7-4 | Restyle shared `ui/card`, `ui/table`, `ui/badge` primitives (spacing, border, header weight/tracking) for consistent polish across Recent AI Runs, Approval Queue, Provider Status, Quick Stats, and System Notice | ⬜ No | ⬜ |
+| UI-P7-5 | Add a floating scroll-to-top/bottom button, bottom-right of `<main>`'s scroll area — only visible once content is scrollable, direction flips based on scroll position, smooth-scrolls on click | ⬜ No | ⬜ |
+| UI-P7-6 | Add a floating "AI assistant" launcher bubble, bottom-right (stacked with the scroll button) — subtle idle animation, opens a stub popover with a static sample greeting (visual only, no real chat wiring yet, labelled as such) | ⬜ No | ⬜ |
+| UI-P7-7 | Evaluate whether Quick Stats sparklines need a more polished look than the current hand-rolled inline SVG; if so, adopt a lightweight Svelte-4-compatible option (e.g. Chart.js via `<canvas>`, framework-agnostic) — only swap if it's a clear visual improvement, otherwise keep the current `Sparkline.svelte` | ⬜ No | ⬜ |
+| UI-P7-8 | Validate: `npm run check`, `npm run test:unit`, and a visual pass in the browser across expanded/collapsed sidebar and scrolled states | ⬜ No | ⬜ |
+
 ## Working agreement for this plan
 
 1. Pick the next `⬜` task top-to-bottom within a phase.
