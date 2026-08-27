@@ -24,6 +24,7 @@
 	import ScrollTextIcon from 'lucide-svelte/icons/scroll-text';
 	import ShieldIcon from 'lucide-svelte/icons/shield';
 	import SettingsIcon from 'lucide-svelte/icons/settings';
+	import ClockIcon from 'lucide-svelte/icons/clock';
 	import ChevronDownIcon from 'lucide-svelte/icons/chevron-down';
 	import MenuIcon from 'lucide-svelte/icons/menu';
 	import XIcon from 'lucide-svelte/icons/x';
@@ -143,8 +144,8 @@
 			</span>
 			{#if !collapsed}
 				<span class="min-w-0">
-					<strong class="block truncate text-[0.8rem] font-bold leading-tight text-white">Resilience Operations &amp;</strong>
-					<span class="block truncate text-[0.65rem] font-medium uppercase tracking-[0.1em] text-slate-400">AI Engineering Portal</span>
+					<span class="block truncate text-[0.86rem] font-medium leading-tight text-white">Resilience Operations &amp;</span>
+					<span class="block truncate text-[0.67rem] font-medium uppercase tracking-[0.1em] text-slate-400">AI Engineering Portal</span>
 				</span>
 			{/if}
 		</a>
@@ -174,22 +175,22 @@
 					<div class="mt-1 space-y-0.5">
 						{#each group.items as item}
 							{#if item.soon}
-								<span
-									class:mx-auto={collapsed}
-									class:h-9={collapsed}
-									class:w-9={collapsed}
-									class:justify-center={collapsed}
-									class:w-full={!collapsed}
-									class:gap-2.5={!collapsed}
-									class:px-2={!collapsed}
-									class="flex items-center rounded-lg py-1.5 text-[0.8rem] font-normal text-slate-600"
-									title="Coming soon"
-								>
-									<svelte:component this={item.icon} class="h-4 w-4 shrink-0" />
-									{#if !collapsed}
-										<span class="truncate">{item.label}</span>
-										<span class="ml-auto shrink-0 rounded-full bg-white/5 px-1.5 py-0.5 text-[0.58rem] font-semibold text-slate-500">Soon</span>
-									{/if}
+								<span class="coming-soon relative block">
+									<span
+										class={`flex cursor-default items-center rounded-lg py-1.5 text-[0.8rem] font-normal text-slate-600 ${
+											collapsed ? 'mx-auto h-9 w-9 justify-center' : 'w-full gap-2.5 px-2'
+										}`}
+									>
+										<svelte:component this={item.icon} class="h-4 w-4 shrink-0" />
+										{#if !collapsed}
+											<span class="truncate">{item.label}</span>
+											<ClockIcon class="ml-auto h-3.5 w-3.5 shrink-0 text-slate-500" aria-hidden="true" />
+										{/if}
+									</span>
+									<span
+										role="tooltip"
+										class="coming-soon-tooltip pointer-events-none absolute right-0 top-full z-50 mt-1 whitespace-nowrap rounded-md bg-ink px-2 py-1 text-xs font-medium text-white opacity-0 shadow-md transition-opacity"
+									>Coming soon</span>
 								</span>
 							{:else}
 								<a
@@ -219,3 +220,9 @@
 		{/each}
 	</nav>
 </aside>
+
+<style>
+	.coming-soon:hover .coming-soon-tooltip {
+		opacity: 1;
+	}
+</style>

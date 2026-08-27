@@ -6,7 +6,7 @@
 
 <th
 	class={cn(
-		'whitespace-nowrap px-2.5 py-1.5 text-left text-[0.62rem] font-bold uppercase tracking-wide text-slate-400',
+		'whitespace-nowrap px-3 py-2.5 text-left text-[0.68rem] font-bold uppercase tracking-wide text-slate-400',
 		className
 	)}
 	{...$$restProps}
