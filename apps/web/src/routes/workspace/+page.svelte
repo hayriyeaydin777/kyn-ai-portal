@@ -216,8 +216,8 @@
 			</div>
 		</CardHeader>
 		<CardContent class="space-y-2">
-			{#each approvalQueue as item}
-				<div class="flex items-center justify-between gap-3 rounded-lg border border-line px-2.5 py-1.5">
+			{#each approvalQueue as item, index}
+				<div class={`flex items-center justify-between gap-3 py-2 ${index > 0 ? 'border-t border-line' : ''}`}>
 					<div class="min-w-0">
 						<p class="truncate text-xs font-semibold text-ink">{item.request}</p>
 						<p class="text-[0.68rem] text-slate-400">{item.type} · {item.by} · {item.age}</p>
@@ -242,25 +242,32 @@
 				Provider Status
 			</CardTitle>
 		</CardHeader>
-		<CardContent class="space-y-2.5">
-			<div class="flex items-center gap-2.5">
-				<span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-teal text-white">
-					<BotIcon class="h-4 w-4" />
-				</span>
-				<div class="flex min-w-0 flex-1 items-center justify-between gap-2">
-					<p class="text-xs font-semibold text-ink">Fake Provider (v1)</p>
-					<Badge variant="success">Active</Badge>
+		<CardContent class="space-y-3">
+			<div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+				<div class="flex min-w-0 items-start gap-2.5">
+					<span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-teal text-white">
+						<BotIcon class="h-4 w-4" />
+					</span>
+					<div class="min-w-0">
+						<div class="flex items-center gap-2">
+							<p class="text-xs font-semibold text-ink">Fake Provider (v1)</p>
+							<Badge variant="success">Active</Badge>
+						</div>
+						<p class="mt-1 text-[0.68rem] text-slate-500">Model: Fake LLM v1.0 · Deterministic</p>
+						<p class="text-[0.68rem] text-slate-500">Environment: Development</p>
+					</div>
+				</div>
+				<div class="shrink-0 rounded-lg bg-paper p-2.5 sm:w-40">
+					<p class="mb-1.5 text-[0.6rem] font-semibold uppercase tracking-wide text-slate-400">Usage Today</p>
+					<div class="grid grid-cols-2 gap-2 text-[0.68rem]">
+						<div><p class="text-slate-400">Requests</p><p class="font-semibold text-ink">128</p></div>
+						<div><p class="text-slate-400">Tokens</p><p class="font-semibold text-ink">25,642</p></div>
+						<div><p class="text-slate-400">Avg latency</p><p class="font-semibold text-ink">1.42s</p></div>
+						<div><p class="text-slate-400">Error rate</p><p class="font-semibold text-ink">0%</p></div>
+					</div>
 				</div>
 			</div>
-			<p class="text-[0.68rem] text-slate-500">Model: Fake LLM v1.0 · Deterministic</p>
-			<p class="text-[0.68rem] text-slate-500">Environment: Development</p>
-			<div class="grid grid-cols-2 gap-2.5 border-t border-line pt-2.5 text-[0.68rem]">
-				<div><p class="text-slate-400">Requests today</p><p class="font-semibold text-ink">128</p></div>
-				<div><p class="text-slate-400">Tokens</p><p class="font-semibold text-ink">25,642</p></div>
-				<div><p class="text-slate-400">Avg latency</p><p class="font-semibold text-ink">1.42s</p></div>
-				<div><p class="text-slate-400">Error rate</p><p class="font-semibold text-ink">0%</p></div>
-			</div>
-			<p class="text-[0.68rem] text-slate-400">Last health check: 10:25:33 AM · Healthy</p>
+			<p class="border-t border-line pt-2.5 text-[0.68rem] text-slate-400">Last health check: 10:25:33 AM · Healthy</p>
 		</CardContent>
 		<CardFooter>
 			<Button variant="ghost" size="sm" disabled class="w-full justify-center">View metrics</Button>
@@ -276,9 +283,9 @@
 				Quick Stats
 			</CardTitle>
 		</CardHeader>
-		<CardContent class="grid grid-cols-2 gap-2.5">
+		<CardContent class="grid grid-cols-2 gap-x-4 gap-y-3">
 			{#each quickStats as stat}
-				<div class="rounded-lg border border-line p-2.5">
+				<div>
 					<p class="text-[0.68rem] text-slate-400">{stat.label}</p>
 					<p class="mt-0.5 text-base font-extrabold text-ink">{stat.value}</p>
 					<div class="mt-1 flex items-center justify-between gap-2">
@@ -293,7 +300,7 @@
 		</CardContent>
 	</Card>
 
-	<Card class="border-teal/20 bg-teal/5">
+	<Card class="bg-paper/60">
 		<CardHeader>
 			<CardTitle class="flex items-center gap-1.5 text-teal">
 				<ShieldCheckIcon class="h-3.5 w-3.5" />

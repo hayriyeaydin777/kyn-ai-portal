@@ -188,7 +188,7 @@
 									<svelte:component this={item.icon} class="h-4 w-4 shrink-0" />
 									{#if !collapsed}
 										<span class="truncate">{item.label}</span>
-										<span class="ml-auto shrink-0 rounded-full bg-white/5 px-1.5 py-0.5 text-[0.58rem] font-semibold uppercase tracking-wide text-slate-500">Soon</span>
+										<span class="ml-auto shrink-0 rounded-full bg-white/5 px-1.5 py-0.5 text-[0.58rem] font-semibold text-slate-500">Soon</span>
 									{/if}
 								</span>
 							{:else}

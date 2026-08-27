@@ -115,6 +115,16 @@ phase, unblocking `mode-watcher`, `melt` (Melt UI v2), `daisyui`, and
 | UI-P7-14 | Section icons: added a small colored icon badge next to each dashboard card title (Recent AI Runs, Approval Queue, Provider Status, Quick Stats) matching the reference; added the missing robot avatar to the Provider Status card | ⬜ No | ✅ done |
 | UI-P7-15 | Quick Stats charts: current per-stat `Sparkline.svelte` (hand-rolled inline SVG) kept — revisit only if a richer chart (e.g. layerchart, now viable on Svelte 5) is explicitly requested | ⬜ No | ⏸️ deferred, no action needed unless requested |
 
+### Phase 7 second follow-up (card content deep-dive)
+
+| ID | Task | Backend needed? | Status |
+|---|---|---|---|
+| UI-P7-16 | Badge/status text: removed `uppercase` from the shared `Badge` component and the sidebar "Soon" pill — status/risk values now render in their natural case ("Completed", "Failed", "High", "Soon") instead of all-caps, matching the reference | ⬜ No | ✅ done |
+| UI-P7-17 | Provider Status card: restructured into a two-column layout — provider icon/name/model/environment on the left, a bordered "Usage Today" sub-panel (Requests/Tokens/Avg latency/Error rate) on the right — matching the reference instead of one stacked column | ⬜ No | ✅ done |
+| UI-P7-18 | Quick Stats: removed the per-tile border box for a cleaner, borderless grid matching the reference | ⬜ No | ✅ done |
+| UI-P7-19 | Approval Queue: replaced individually-bordered row boxes with a plain divided list (border only between rows), matching the reference's list style | ⬜ No | ✅ done |
+| UI-P7-20 | System Notice: removed the teal-tinted background/border for a neutral card background, matching the reference | ⬜ No | ✅ done |
+
 ## Working agreement for this plan
 
 1. Pick the next `⬜` task top-to-bottom within a phase.
