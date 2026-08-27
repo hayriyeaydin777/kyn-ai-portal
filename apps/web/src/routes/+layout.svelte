@@ -19,7 +19,7 @@
 		class="flex h-screen flex-col transition-[padding] duration-200"
 	>
 		<AppHeader applications={data.applications} />
-		<main class="mx-auto w-full max-w-7xl flex-1 overflow-y-auto px-5 py-6 md:px-8 md:py-8">
+		<main class="w-full flex-1 overflow-y-auto px-5 py-6 md:px-8 md:py-8">
 			<slot />
 		</main>
 		<Footer />

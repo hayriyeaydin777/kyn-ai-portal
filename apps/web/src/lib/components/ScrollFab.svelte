@@ -35,7 +35,7 @@
 		type="button"
 		on:click={scrollToggle}
 		aria-label={atBottom ? 'Scroll to top' : 'Scroll to bottom'}
-		class="dsy-btn dsy-btn-circle fixed bottom-6 right-6 z-40 h-11 w-11 border-none bg-ink text-white shadow-lg transition-transform hover:scale-105 hover:bg-teal"
+		class="fixed bottom-6 right-6 z-40 flex h-11 w-11 items-center justify-center rounded-full bg-ink text-white shadow-lg transition-transform hover:scale-105 hover:bg-teal"
 	>
 		{#if atBottom}
 			<ArrowUpIcon class="h-5 w-5" />

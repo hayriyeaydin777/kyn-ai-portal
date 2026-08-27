@@ -10,6 +10,9 @@
 	import TrendingUpIcon from 'lucide-svelte/icons/trending-up';
 	import ShieldCheckIcon from 'lucide-svelte/icons/shield-check';
 	import ArrowRightIcon from 'lucide-svelte/icons/arrow-up-right';
+	import CircleCheckBigIcon from 'lucide-svelte/icons/circle-check-big';
+	import BotIcon from 'lucide-svelte/icons/bot';
+	import BarChart3Icon from 'lucide-svelte/icons/bar-chart-3';
 
 	import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '$lib/components/ui/card';
 	import { Badge } from '$lib/components/ui/badge';
@@ -140,13 +143,13 @@
 					<Button
 						href={tool.href}
 						variant="ghost"
-						class={`w-full justify-center rounded-full border font-semibold ${tool.pill}`}
+						class={`w-full justify-center rounded-lg border font-semibold ${tool.pill}`}
 					>
 						Launch
 						<ArrowRightIcon class="h-3.5 w-3.5" />
 					</Button>
 				{:else}
-					<Button disabled class="w-full justify-center rounded-full border border-line bg-paper text-slate-400">Coming soon</Button>
+					<Button disabled class="w-full justify-center rounded-lg border border-line bg-paper text-slate-400">Coming soon</Button>
 				{/if}
 			</CardFooter>
 		</Card>
@@ -156,9 +159,14 @@
 <div class="mb-6 grid grid-cols-1 gap-5 lg:grid-cols-3">
 	<Card class="lg:col-span-2">
 		<CardHeader class="flex-row items-center justify-between">
-			<div>
-				<CardTitle>Recent AI Runs</CardTitle>
-				<CardDescription>Sample data — run history isn't wired to a backend yet.</CardDescription>
+			<div class="flex items-center gap-2">
+				<span class="flex h-7 w-7 items-center justify-center rounded-lg bg-teal/10 text-teal">
+					<ListChecksIcon class="h-3.5 w-3.5" />
+				</span>
+				<div>
+					<CardTitle>Recent AI Runs</CardTitle>
+					<CardDescription>Sample data — run history isn't wired to a backend yet.</CardDescription>
+				</div>
 			</div>
 			<Button variant="ghost" size="sm" disabled>View all runs</Button>
 		</CardHeader>
@@ -194,12 +202,17 @@
 
 	<Card>
 		<CardHeader class="flex-row items-center justify-between">
-			<div>
-				<CardTitle class="flex items-center gap-2">
-					Approval Queue
-					<Badge variant="danger">{approvalQueue.length}</Badge>
-				</CardTitle>
-				<CardDescription>Sample data — approvals aren't wired to a backend yet.</CardDescription>
+			<div class="flex items-center gap-2">
+				<span class="flex h-7 w-7 items-center justify-center rounded-lg bg-amber-100 text-amber-600">
+					<CircleCheckBigIcon class="h-3.5 w-3.5" />
+				</span>
+				<div>
+					<CardTitle class="flex items-center gap-2">
+						Approval Queue
+						<Badge variant="danger">{approvalQueue.length}</Badge>
+					</CardTitle>
+					<CardDescription>Sample data — approvals aren't wired to a backend yet.</CardDescription>
+				</div>
 			</div>
 		</CardHeader>
 		<CardContent class="space-y-2">
@@ -222,12 +235,22 @@
 <div class="grid grid-cols-1 gap-5 lg:grid-cols-3">
 	<Card>
 		<CardHeader>
-			<CardTitle>Provider Status</CardTitle>
+			<CardTitle class="flex items-center gap-2">
+				<span class="flex h-7 w-7 items-center justify-center rounded-lg bg-teal/10 text-teal">
+					<BotIcon class="h-3.5 w-3.5" />
+				</span>
+				Provider Status
+			</CardTitle>
 		</CardHeader>
 		<CardContent class="space-y-2.5">
-			<div class="flex items-center justify-between">
-				<p class="text-xs font-semibold text-ink">Fake Provider (v1)</p>
-				<Badge variant="success">Active</Badge>
+			<div class="flex items-center gap-2.5">
+				<span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-teal text-white">
+					<BotIcon class="h-4 w-4" />
+				</span>
+				<div class="flex min-w-0 flex-1 items-center justify-between gap-2">
+					<p class="text-xs font-semibold text-ink">Fake Provider (v1)</p>
+					<Badge variant="success">Active</Badge>
+				</div>
 			</div>
 			<p class="text-[0.68rem] text-slate-500">Model: Fake LLM v1.0 · Deterministic</p>
 			<p class="text-[0.68rem] text-slate-500">Environment: Development</p>
@@ -246,7 +269,12 @@
 
 	<Card>
 		<CardHeader>
-			<CardTitle>Quick Stats</CardTitle>
+			<CardTitle class="flex items-center gap-2">
+				<span class="flex h-7 w-7 items-center justify-center rounded-lg bg-blue-100 text-blue-600">
+					<BarChart3Icon class="h-3.5 w-3.5" />
+				</span>
+				Quick Stats
+			</CardTitle>
 		</CardHeader>
 		<CardContent class="grid grid-cols-2 gap-2.5">
 			{#each quickStats as stat}

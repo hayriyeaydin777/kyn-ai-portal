@@ -12,19 +12,19 @@
 	{...popover.trigger}
 	type="button"
 	aria-label={popover.open ? 'Close AI assistant' : 'Open AI assistant'}
-	class="dsy-btn dsy-btn-circle fixed bottom-20 right-6 z-40 h-14 w-14 border-none bg-gradient-to-br from-teal to-emerald-500 text-white shadow-xl transition-transform hover:scale-105"
+	class="fixed bottom-[4.75rem] right-6 z-40 flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-teal to-emerald-500 text-white shadow-xl transition-transform hover:scale-105"
 >
 	<span class="absolute inset-0 -z-10 animate-ping rounded-full bg-teal/40"></span>
 	{#if popover.open}
-		<XIcon class="h-6 w-6" />
+		<XIcon class="h-5 w-5" />
 	{:else}
-		<BotIcon class="h-6 w-6" />
+		<BotIcon class="h-5 w-5" />
 	{/if}
 </button>
 
 <div
 	{...popover.content}
-	class="fixed bottom-[9.5rem] right-6 z-40 w-80 rounded-2xl border border-line bg-white p-4 shadow-2xl [&:not(:popover-open)]:hidden"
+	class="fixed bottom-32 right-6 z-40 w-80 rounded-xl border border-line bg-white p-4 shadow-2xl [&:not(:popover-open)]:hidden"
 >
 	<div class="flex items-center gap-2 border-b border-line pb-3">
 		<span class="flex h-8 w-8 items-center justify-center rounded-lg bg-teal/10 text-teal">

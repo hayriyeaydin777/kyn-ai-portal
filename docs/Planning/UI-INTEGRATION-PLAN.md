@@ -103,6 +103,18 @@ Svelte-4-only stack used earlier in this plan) as a prerequisite for this
 phase, unblocking `mode-watcher`, `melt` (Melt UI v2), `daisyui`, and
 `@fontsource/inter`.
 
+### Phase 7 follow-up fixes (post-review)
+
+| ID | Task | Backend needed? | Status |
+|---|---|---|---|
+| UI-P7-9 | Header: right-align search + status/notification/help/avatar as one right-hand cluster (was stretching full-width); shrink header height/icon sizes to match reference density | ⬜ No | ✅ done |
+| UI-P7-10 | Layout: drop `mx-auto max-w-7xl` centering on `<main>` (caused a growing empty gutter/misaligned scrollbar once the sidebar collapsed); content now spans full available width with consistent padding | ⬜ No | ✅ done |
+| UI-P7-11 | Floating buttons: removed daisyUI classes that fought with fixed sizing on `ScrollFab`/`AssistantBubble` (caused off-center icons); fixed a missing `relative` on the assistant trigger that made its ping-pulse ring render off-position | ⬜ No | ✅ done |
+| UI-P7-12 | Footer: added the shield-check brand icon, `\|` separators between version/copyright and between nav links, left-aligned text (was missing icon and used a plain `·` dot) | ⬜ No | ✅ done |
+| UI-P7-13 | Cards/buttons: reduced `Card` radius (`rounded-xl`→`rounded-lg`) + added `overflow-hidden`; reduced `CardTitle` weight/size; changed tool-card "Launch" buttons from `rounded-full` pills to `rounded-lg`, matching the reference's rectangular buttons | ⬜ No | ✅ done |
+| UI-P7-14 | Section icons: added a small colored icon badge next to each dashboard card title (Recent AI Runs, Approval Queue, Provider Status, Quick Stats) matching the reference; added the missing robot avatar to the Provider Status card | ⬜ No | ✅ done |
+| UI-P7-15 | Quick Stats charts: current per-stat `Sparkline.svelte` (hand-rolled inline SVG) kept — revisit only if a richer chart (e.g. layerchart, now viable on Svelte 5) is explicitly requested | ⬜ No | ⏸️ deferred, no action needed unless requested |
+
 ## Working agreement for this plan
 
 1. Pick the next `⬜` task top-to-bottom within a phase.

@@ -71,63 +71,65 @@
 
 <svelte:window on:keydown={handleWindowKeydown} />
 
-<header class="flex h-14 shrink-0 items-center justify-between gap-4 border-b border-line bg-white px-4 pl-16 md:px-6 md:pl-4">
+<header class="flex h-12 shrink-0 items-center gap-3 border-b border-line bg-white px-3 pl-16 md:px-4 md:pl-3">
 	<button
 		type="button"
-		class="hidden h-9 w-9 shrink-0 items-center justify-center rounded-lg text-slate-500 hover:bg-paper hover:text-ink md:flex"
+		class="hidden h-8 w-8 shrink-0 items-center justify-center rounded-lg text-slate-500 hover:bg-paper hover:text-ink md:flex"
 		aria-label={$sidebarCollapsed ? 'Expand navigation' : 'Collapse navigation'}
 		on:click={() => sidebarCollapsed.update((value) => !value)}
 	>
-		<MenuIcon class="h-5 w-5" />
+		<MenuIcon class="h-4 w-4" />
 	</button>
 
-	<div class="relative hidden max-w-md flex-1 md:block" bind:this={searchWrapper}>
-		<div class="flex items-center gap-2 rounded-lg border border-line bg-paper px-2.5 py-1.5 text-sm text-slate-500 focus-within:border-teal">
-			<SearchIcon class="h-4 w-4 shrink-0" />
+	<div class="flex-1"></div>
+
+	<div class="relative hidden w-64 md:block" bind:this={searchWrapper}>
+		<div class="flex items-center gap-1.5 rounded-lg border border-line bg-paper px-2 py-1 text-xs text-slate-500 focus-within:border-teal">
+			<SearchIcon class="h-3.5 w-3.5 shrink-0" />
 			<input
 				bind:this={searchInput}
 				bind:value={query}
 				on:focus={() => (searchOpen = true)}
 				type="search"
-				placeholder="Search applications, assessments, evidence…"
-				class="w-full bg-transparent text-sm text-ink placeholder:text-slate-400 focus:outline-none"
+				placeholder="Search…"
+				class="w-full bg-transparent text-xs text-ink placeholder:text-slate-400 focus:outline-none"
 			/>
-			<kbd class="hidden shrink-0 rounded border border-line bg-white px-1.5 py-0.5 text-[0.65rem] font-semibold text-slate-400 sm:inline">
+			<kbd class="hidden shrink-0 rounded border border-line bg-white px-1 py-0.5 text-[0.58rem] font-semibold text-slate-400 sm:inline">
 				{isMac() ? '⌘K' : 'Ctrl K'}
 			</kbd>
 		</div>
 		{#if searchOpen && query.trim()}
-			<div class="absolute left-0 right-0 top-full z-50 mt-2 rounded-xl border border-line bg-white p-1.5 shadow-lg">
+			<div class="absolute left-0 right-0 top-full z-50 mt-2 rounded-lg border border-line bg-white p-1.5 shadow-lg">
 				{#if matches.length > 0}
 					{#each matches as app (app.id)}
 						<button
 							type="button"
-							class="flex w-full items-center gap-2 rounded-lg px-2.5 py-2 text-left text-sm font-medium text-ink hover:bg-paper hover:text-teal"
+							class="flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-xs font-medium text-ink hover:bg-paper hover:text-teal"
 							on:click={() => selectApplication(app.id)}
 						>
 							{app.name}
 						</button>
 					{/each}
 				{:else}
-					<p class="px-2.5 py-2 text-sm text-slate-400">No matching applications.</p>
+					<p class="px-2 py-1.5 text-xs text-slate-400">No matching applications.</p>
 				{/if}
 			</div>
 		{/if}
 	</div>
 
-	<div class="flex items-center gap-3 text-slate-400">
-		<span class="hidden items-center gap-2 text-sm text-slate-500 sm:flex">
-			<span class="h-2 w-2 rounded-full bg-emerald-500"></span>
+	<div class="flex items-center gap-2 text-slate-400">
+		<span class="hidden items-center gap-1.5 text-xs text-slate-500 sm:flex">
+			<span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
 			Connected
 		</span>
 
 		<DropdownMenu>
 			<DropdownMenuTrigger
-				class="relative hidden h-9 w-9 items-center justify-center rounded-lg border border-line hover:bg-paper sm:flex"
+				class="relative hidden h-8 w-8 items-center justify-center rounded-lg border border-line hover:bg-paper sm:flex"
 				title="Notifications"
 			>
-				<BellIcon class="h-4 w-4" />
-				<span class="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-coral text-[0.6rem] font-bold text-white">
+				<BellIcon class="h-3.5 w-3.5" />
+				<span class="absolute -right-1 -top-1 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-coral text-[0.55rem] font-bold text-white">
 					{sampleNotifications.length}
 				</span>
 			</DropdownMenuTrigger>
@@ -144,8 +146,8 @@
 		</DropdownMenu>
 
 		<DropdownMenu>
-			<DropdownMenuTrigger class="hidden h-9 w-9 items-center justify-center rounded-lg border border-line hover:bg-paper sm:flex" title="Help">
-				<CircleHelpIcon class="h-4 w-4" />
+			<DropdownMenuTrigger class="hidden h-8 w-8 items-center justify-center rounded-lg border border-line hover:bg-paper sm:flex" title="Help">
+				<CircleHelpIcon class="h-3.5 w-3.5" />
 			</DropdownMenuTrigger>
 			<DropdownMenuContent class="w-56">
 				<DropdownMenuItem>Documentation</DropdownMenuItem>
@@ -156,7 +158,7 @@
 
 		<DropdownMenu>
 			<DropdownMenuTrigger title="Demo user">
-				<Avatar>
+				<Avatar class="h-8 w-8">
 					<AvatarFallback>HA</AvatarFallback>
 				</Avatar>
 			</DropdownMenuTrigger>

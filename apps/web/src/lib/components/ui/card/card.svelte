@@ -4,6 +4,6 @@
 	export { className as class };
 </script>
 
-<div class={cn('rounded-xl border border-line bg-white shadow-sm', className)} {...$$restProps}>
+<div class={cn('overflow-hidden rounded-lg border border-line bg-white shadow-sm', className)} {...$$restProps}>
 	<slot />
 </div>
