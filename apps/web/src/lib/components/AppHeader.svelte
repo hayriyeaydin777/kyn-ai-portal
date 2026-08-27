@@ -4,7 +4,9 @@
 	import SearchIcon from 'lucide-svelte/icons/search';
 	import BellIcon from 'lucide-svelte/icons/bell';
 	import CircleHelpIcon from 'lucide-svelte/icons/circle-help';
+	import MenuIcon from 'lucide-svelte/icons/menu';
 	import type { ApplicationProfile } from '$lib/api';
+	import { sidebarCollapsed } from '$lib/stores/sidebar';
 	import {
 		DropdownMenu,
 		DropdownMenuTrigger,
@@ -69,11 +71,15 @@
 
 <svelte:window on:keydown={handleWindowKeydown} />
 
-<header class="flex h-14 items-center justify-between gap-4 border-b border-line bg-white px-4 pl-16 md:px-6 md:pl-6">
-	<div class="hidden shrink-0 sm:block">
-		<p class="text-[0.62rem] font-bold uppercase tracking-[0.16em] text-coral">Resilience operations</p>
-		<p class="text-xs font-medium text-slate-500">AI engineering control center</p>
-	</div>
+<header class="flex h-14 items-center justify-between gap-4 border-b border-line bg-white px-4 pl-16 md:px-6 md:pl-4">
+	<button
+		type="button"
+		class="hidden h-9 w-9 shrink-0 items-center justify-center rounded-lg text-slate-500 hover:bg-paper hover:text-ink md:flex"
+		aria-label={$sidebarCollapsed ? 'Expand navigation' : 'Collapse navigation'}
+		on:click={() => sidebarCollapsed.update((value) => !value)}
+	>
+		<MenuIcon class="h-5 w-5" />
+	</button>
 
 	<div class="relative hidden max-w-md flex-1 md:block" bind:this={searchWrapper}>
 		<div class="flex items-center gap-2 rounded-lg border border-line bg-paper px-2.5 py-1.5 text-sm text-slate-500 focus-within:border-teal">

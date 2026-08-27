@@ -27,10 +27,11 @@
 	import ChevronDownIcon from 'lucide-svelte/icons/chevron-down';
 	import MenuIcon from 'lucide-svelte/icons/menu';
 	import XIcon from 'lucide-svelte/icons/x';
+	import { sidebarCollapsed } from '$lib/stores/sidebar';
 	import type { ComponentType } from 'svelte';
 
 	let open = false;
-	let collapsed = false;
+	$: collapsed = $sidebarCollapsed;
 
 	type NavItem = { href: string; label: string; icon: ComponentType; soon?: boolean };
 	type NavGroup = { title: string; items: NavItem[] };
@@ -131,7 +132,12 @@
 	aria-label="Primary navigation"
 >
 	<div class="flex items-center justify-between gap-2 border-b border-white/10 px-1 pb-4">
-		<a href="/" class="flex min-w-0 items-center gap-2.5 no-underline" on:click={() => (open = false)}>
+		<a
+			href="/"
+			class:justify-center={collapsed}
+			class="flex min-w-0 flex-1 items-center gap-2.5 no-underline"
+			on:click={() => (open = false)}
+		>
 			<span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-coral text-white">
 				<ShieldCheckIcon class="h-4 w-4" />
 			</span>
@@ -142,14 +148,6 @@
 				</span>
 			{/if}
 		</a>
-		<button
-			class="hidden shrink-0 items-center justify-center rounded-lg p-1.5 text-slate-400 hover:bg-white/5 hover:text-white md:flex"
-			type="button"
-			aria-label={collapsed ? 'Expand navigation' : 'Collapse navigation'}
-			on:click={() => (collapsed = !collapsed)}
-		>
-			<MenuIcon class="h-4 w-4" />
-		</button>
 		<button class="shrink-0 text-slate-400 md:hidden" type="button" aria-label="Close navigation" on:click={() => (open = false)}>
 			<XIcon class="h-4 w-4" />
 		</button>
@@ -177,7 +175,9 @@
 						{#each group.items as item}
 							{#if item.soon}
 								<span
-									class="flex items-center gap-2.5 rounded-lg px-2 py-1.5 text-sm font-medium text-slate-600"
+									class:justify-center={collapsed}
+									class:px-2={!collapsed}
+									class="flex items-center gap-2.5 rounded-lg py-1.5 text-sm font-medium text-slate-600"
 									title="Coming soon"
 								>
 									<svelte:component this={item.icon} class="h-4 w-4 shrink-0" />
@@ -190,7 +190,9 @@
 								<a
 									href={item.href}
 									class:active={item.href === '/' ? currentPath === '/' : currentPath.startsWith(item.href)}
-									class="sidebar-link group flex items-center gap-2.5 rounded-lg px-2 py-1.5 text-sm font-medium text-slate-300 no-underline transition-colors hover:bg-white/5 hover:text-white"
+									class:justify-center={collapsed}
+									class:px-2={!collapsed}
+									class="sidebar-link group flex items-center gap-2.5 rounded-lg py-1.5 text-sm font-medium text-slate-300 no-underline transition-colors hover:bg-white/5 hover:text-white"
 									on:click={() => (open = false)}
 									title={collapsed ? item.label : undefined}
 								>
