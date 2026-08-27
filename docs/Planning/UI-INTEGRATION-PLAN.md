@@ -47,9 +47,9 @@ task. Each row below is one approval-sized unit of work (one TODO ID).
 |---|---|---|---|---|
 | UI-P3-1 | Brief Generator | `/workspace/brief-generator` | `briefs` router (exists) | ✅ done |
 | UI-P3-2 | Modernization Advisor | `/applications/[id]/modernization` (exists) | `modernization_cases`/`modernization_recommendations` (exists) | ✅ done |
-| UI-P3-3 | Code Review | `/workspace/code-review` | `code_reviews` router (exists) | ⬜ |
-| UI-P3-4 | Test Generator | `/workspace/test-generator` | `test_generations` router (exists) | ⬜ |
-| UI-P3-5 | Documentation | `/workspace/documentation` | `documentation_drafts` router (exists) | ⬜ |
+| UI-P3-3 | Code Review | `/workspace/code-review` | `code_reviews` router (exists) | ✅ done |
+| UI-P3-4 | Test Generator | `/workspace/test-generator` | `test_generations` router (exists) | ✅ done |
+| UI-P3-5 | Documentation | `/workspace/documentation` | `documentation_drafts` router (exists) | ✅ done |
 | UI-P3-6 | Prompt Lab | `/workspace/prompt-lab` | none exists — **stub, client-side only, no persistence** | ⏸️ stub only |
 
 ## Phase 4 — Architecture

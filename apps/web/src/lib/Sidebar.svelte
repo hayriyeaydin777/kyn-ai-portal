@@ -25,9 +25,9 @@
 			title: 'AI workspace',
 			items: [
 				{ href: '/workspace/brief-generator', label: 'Brief generator', icon: '✦' },
-				{ href: '/workspace', label: 'Code review', icon: '⌨', soon: true },
-				{ href: '/workspace', label: 'Test generator', icon: '✓', soon: true },
-				{ href: '/workspace', label: 'Documentation', icon: '✎', soon: true },
+				{ href: '/workspace/code-review', label: 'Code review', icon: '⌨' },
+				{ href: '/workspace/test-generator', label: 'Test generator', icon: '✓' },
+				{ href: '/workspace/documentation', label: 'Documentation', icon: '✎' },
 				{ href: '/workspace', label: 'Prompt lab', icon: '⚗', soon: true }
 			]
 		},
