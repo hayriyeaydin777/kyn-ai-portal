@@ -3,6 +3,8 @@
 	import Sidebar from '$lib/Sidebar.svelte';
 	import AppHeader from '$lib/components/AppHeader.svelte';
 	import Footer from '$lib/components/Footer.svelte';
+	import ScrollFab from '$lib/components/ScrollFab.svelte';
+	import AssistantBubble from '$lib/components/AssistantBubble.svelte';
 	import { sidebarCollapsed } from '$lib/stores/sidebar';
 	import type { LayoutData } from './$types';
 
@@ -23,4 +25,7 @@
 		<Footer />
 	</div>
 </div>
+
+<ScrollFab />
+<AssistantBubble />
 

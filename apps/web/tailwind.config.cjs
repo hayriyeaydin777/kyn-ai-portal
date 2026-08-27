@@ -9,8 +9,21 @@ module.exports = {
 				teal: '#174b4d',
 				coral: '#ff4d3d',
 				line: '#d9e1df'
+			},
+			fontFamily: {
+				sans: ['Inter', 'Avenir Next', 'Helvetica Neue', 'sans-serif']
 			}
 		}
 	},
-	plugins: [require('tailwindcss-animate')]
+	plugins: [
+		require('tailwindcss-animate'),
+		require('daisyui')
+	],
+	daisyui: {
+		prefix: 'dsy-',
+		themes: ['light'],
+		base: false,
+		utils: true,
+		logs: false
+	}
 };

@@ -23,42 +23,48 @@
 			name: 'Modernization Advisor',
 			description: 'Assess current state, target architecture, risks, and migration roadmap.',
 			icon: RocketIcon,
-			accent: 'bg-teal/10 text-teal',
+			tile: 'bg-gradient-to-br from-teal to-emerald-600',
+			pill: 'border-teal/20 bg-teal/10 text-teal hover:bg-teal/15',
 			href: '/applications'
 		},
 		{
 			name: 'Code Review',
 			description: 'AI-powered static analysis for security, performance, and best practices.',
 			icon: CodeIcon,
-			accent: 'bg-coral/10 text-coral',
+			tile: 'bg-gradient-to-br from-coral to-red-600',
+			pill: 'border-coral/20 bg-coral/10 text-coral hover:bg-coral/15',
 			href: '/workspace/code-review'
 		},
 		{
 			name: 'Test Generator',
 			description: 'Generate unit, integration, and boundary tests from code or requirements.',
 			icon: ListChecksIcon,
-			accent: 'bg-blue-100 text-blue-600',
+			tile: 'bg-gradient-to-br from-blue-500 to-blue-700',
+			pill: 'border-blue-200 bg-blue-50 text-blue-700 hover:bg-blue-100',
 			href: '/workspace/test-generator'
 		},
 		{
 			name: 'Documentation Generator',
 			description: 'Create technical docs, API references, diagrams, and architecture notes.',
 			icon: FilePenLineIcon,
-			accent: 'bg-purple-100 text-purple-600',
+			tile: 'bg-gradient-to-br from-purple-500 to-purple-700',
+			pill: 'border-purple-200 bg-purple-50 text-purple-700 hover:bg-purple-100',
 			href: '/workspace/documentation'
 		},
 		{
 			name: 'ADR Assistant',
 			description: 'Generate Architecture Decision Records with alternatives and trade-offs.',
 			icon: ScaleIcon,
-			accent: 'bg-amber-100 text-amber-600',
+			tile: 'bg-gradient-to-br from-amber-400 to-amber-600',
+			pill: 'border-amber-200 bg-amber-50 text-amber-700 hover:bg-amber-100',
 			href: '/governance'
 		},
 		{
 			name: 'Prompt Lab',
 			description: 'Design, version, evaluate, and optimize prompts with test datasets.',
 			icon: MessageSquareIcon,
-			accent: 'bg-teal/10 text-teal',
+			tile: 'bg-gradient-to-br from-indigo-500 to-indigo-700',
+			pill: 'border-indigo-200 bg-indigo-50 text-indigo-700 hover:bg-indigo-100',
 			href: null
 		}
 	];
@@ -123,20 +129,24 @@
 	{#each tools as tool}
 		<Card class="flex flex-col">
 			<CardHeader>
-				<span class={`flex h-8 w-8 items-center justify-center rounded-lg ${tool.accent}`}>
-					<svelte:component this={tool.icon} class="h-4 w-4" />
+				<span class={`flex h-12 w-12 items-center justify-center rounded-2xl text-white shadow-sm ${tool.tile}`}>
+					<svelte:component this={tool.icon} class="h-6 w-6" />
 				</span>
-				<CardTitle class="mt-1.5">{tool.name}</CardTitle>
+				<CardTitle class="mt-2">{tool.name}</CardTitle>
 				<CardDescription>{tool.description}</CardDescription>
 			</CardHeader>
 			<CardFooter class="mt-auto border-t-0 pt-0">
 				{#if tool.href}
-					<Button href={tool.href} variant="secondary" class="w-full justify-center">
+					<Button
+						href={tool.href}
+						variant="ghost"
+						class={`w-full justify-center rounded-full border font-semibold ${tool.pill}`}
+					>
 						Launch
 						<ArrowRightIcon class="h-3.5 w-3.5" />
 					</Button>
 				{:else}
-					<Button disabled variant="secondary" class="w-full justify-center">Coming soon</Button>
+					<Button disabled class="w-full justify-center rounded-full border border-line bg-paper text-slate-400">Coming soon</Button>
 				{/if}
 			</CardFooter>
 		</Card>
