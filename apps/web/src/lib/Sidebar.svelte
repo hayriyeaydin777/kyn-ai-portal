@@ -24,7 +24,7 @@
 	import ScrollTextIcon from 'lucide-svelte/icons/scroll-text';
 	import ShieldIcon from 'lucide-svelte/icons/shield';
 	import SettingsIcon from 'lucide-svelte/icons/settings';
-	import ChevronsLeftIcon from 'lucide-svelte/icons/chevrons-left';
+	import ChevronDownIcon from 'lucide-svelte/icons/chevron-down';
 	import MenuIcon from 'lucide-svelte/icons/menu';
 	import XIcon from 'lucide-svelte/icons/x';
 	import type { ComponentType } from 'svelte';
@@ -93,6 +93,12 @@
 		}
 	];
 
+	let collapsedGroups: Record<string, boolean> = {};
+
+	function toggleGroup(title: string) {
+		collapsedGroups = { ...collapsedGroups, [title]: !collapsedGroups[title] };
+	}
+
 	$: currentPath = $page.url.pathname;
 </script>
 
@@ -124,7 +130,7 @@
 	class="fixed inset-y-0 left-0 z-50 flex w-64 -translate-x-full flex-col bg-[#0b1220] px-3 py-4 text-slate-300 transition-[transform,width] duration-200 md:translate-x-0"
 	aria-label="Primary navigation"
 >
-	<div class="flex items-center justify-between border-b border-white/10 px-1 pb-4">
+	<div class="flex items-center justify-between gap-2 border-b border-white/10 px-1 pb-4">
 		<a href="/" class="flex min-w-0 items-center gap-2.5 no-underline" on:click={() => (open = false)}>
 			<span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-coral text-white">
 				<ShieldCheckIcon class="h-4 w-4" />
@@ -136,56 +142,68 @@
 				</span>
 			{/if}
 		</a>
+		<button
+			class="hidden shrink-0 items-center justify-center rounded-lg p-1.5 text-slate-400 hover:bg-white/5 hover:text-white md:flex"
+			type="button"
+			aria-label={collapsed ? 'Expand navigation' : 'Collapse navigation'}
+			on:click={() => (collapsed = !collapsed)}
+		>
+			<MenuIcon class="h-4 w-4" />
+		</button>
 		<button class="shrink-0 text-slate-400 md:hidden" type="button" aria-label="Close navigation" on:click={() => (open = false)}>
 			<XIcon class="h-4 w-4" />
 		</button>
 	</div>
 
-	<nav class="no-scrollbar mt-3 flex-1 space-y-2.5 overflow-y-auto overflow-x-hidden">
-		{#each navGroups as group}
-			<div>
+	<nav class="no-scrollbar mt-3 flex-1 overflow-y-auto overflow-x-hidden">
+		{#each navGroups as group, index}
+			<div class={index === 0 ? 'pb-3' : 'border-t border-white/10 py-3'}>
 				{#if !collapsed}
-					<p class="mb-0.5 px-2 text-[0.62rem] font-bold uppercase tracking-[0.14em] text-slate-500">{group.title}</p>
+					<button
+						type="button"
+						class="flex w-full items-center justify-between rounded-md px-2 py-1 text-[0.68rem] font-bold uppercase tracking-[0.12em] text-slate-500 hover:text-slate-300"
+						on:click={() => toggleGroup(group.title)}
+					>
+						{group.title}
+						<ChevronDownIcon
+							class={collapsedGroups[group.title]
+								? 'h-3.5 w-3.5 -rotate-90 transition-transform'
+								: 'h-3.5 w-3.5 transition-transform'}
+						/>
+					</button>
 				{/if}
-				<div class="space-y-0.5">
-					{#each group.items as item}
-						{#if item.soon}
-							<span
-								class="flex items-center gap-2.5 rounded-md px-2 py-1 text-[0.8rem] font-medium text-slate-600"
-								title="Coming soon"
-							>
-								<svelte:component this={item.icon} class="h-3.5 w-3.5 shrink-0" />
-								{#if !collapsed}
-									<span class="truncate">{item.label}</span>
-									<span class="ml-auto shrink-0 rounded-full bg-white/5 px-1.5 py-0.5 text-[0.58rem] font-bold uppercase tracking-wide text-slate-500">Soon</span>
-								{/if}
-							</span>
-						{:else}
-							<a
-								href={item.href}
-								class:active={item.href === '/' ? currentPath === '/' : currentPath.startsWith(item.href)}
-								class="sidebar-link group flex items-center gap-2.5 rounded-md px-2 py-1 text-[0.8rem] font-medium text-slate-300 no-underline transition-colors hover:bg-white/5 hover:text-white"
-								on:click={() => (open = false)}
-								title={collapsed ? item.label : undefined}
-							>
-								<svelte:component this={item.icon} class="h-3.5 w-3.5 shrink-0 text-slate-400 group-[.active]:text-white" />
-								{#if !collapsed}
-									<span class="truncate">{item.label}</span>
-								{/if}
-							</a>
-						{/if}
-					{/each}
-				</div>
+				{#if collapsed || !collapsedGroups[group.title]}
+					<div class="mt-1 space-y-0.5">
+						{#each group.items as item}
+							{#if item.soon}
+								<span
+									class="flex items-center gap-2.5 rounded-lg px-2 py-1.5 text-sm font-medium text-slate-600"
+									title="Coming soon"
+								>
+									<svelte:component this={item.icon} class="h-4 w-4 shrink-0" />
+									{#if !collapsed}
+										<span class="truncate">{item.label}</span>
+										<span class="ml-auto shrink-0 rounded-full bg-white/5 px-1.5 py-0.5 text-[0.58rem] font-bold uppercase tracking-wide text-slate-500">Soon</span>
+									{/if}
+								</span>
+							{:else}
+								<a
+									href={item.href}
+									class:active={item.href === '/' ? currentPath === '/' : currentPath.startsWith(item.href)}
+									class="sidebar-link group flex items-center gap-2.5 rounded-lg px-2 py-1.5 text-sm font-medium text-slate-300 no-underline transition-colors hover:bg-white/5 hover:text-white"
+									on:click={() => (open = false)}
+									title={collapsed ? item.label : undefined}
+								>
+									<svelte:component this={item.icon} class="h-4 w-4 shrink-0 text-slate-400 group-[.active]:text-emerald-400" />
+									{#if !collapsed}
+										<span class="truncate">{item.label}</span>
+									{/if}
+								</a>
+							{/if}
+						{/each}
+					</div>
+				{/if}
 			</div>
 		{/each}
 	</nav>
-
-	<button
-		type="button"
-		class="mt-3 hidden shrink-0 items-center justify-center gap-2 rounded-md border border-white/10 px-2 py-1.5 text-xs font-medium text-slate-400 hover:bg-white/5 hover:text-white md:flex"
-		on:click={() => (collapsed = !collapsed)}
-	>
-		<ChevronsLeftIcon class={collapsed ? 'h-3.5 w-3.5 rotate-180 transition-transform' : 'h-3.5 w-3.5 transition-transform'} />
-		{#if !collapsed}Collapse{/if}
-	</button>
 </aside>

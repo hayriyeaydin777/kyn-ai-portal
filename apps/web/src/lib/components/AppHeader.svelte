@@ -151,7 +151,7 @@
 		<DropdownMenu>
 			<DropdownMenuTrigger title="Demo user">
 				<Avatar>
-					<AvatarFallback>AD</AvatarFallback>
+					<AvatarFallback>HA</AvatarFallback>
 				</Avatar>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent class="w-48">
