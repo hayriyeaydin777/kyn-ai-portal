@@ -37,6 +37,7 @@
 {/if}
 
 <h2>Assessment</h2>
+<p><a href={`/applications/${data.application.id}/findings`}>View full findings page</a></p>
 <form method="POST" action="?/evaluate" use:enhance>
 	<button type="submit">Run deterministic assessment</button>
 </form>

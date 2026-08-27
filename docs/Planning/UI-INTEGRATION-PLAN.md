@@ -38,7 +38,7 @@ task. Each row below is one approval-sized unit of work (one TODO ID).
 | UI-P2-2 | Application detail | `/applications/[id]` (exists) | existing routers | ✅ done |
 | UI-P2-3 | Dependencies | `/applications/[id]/dependencies` | `dependencies` router (exists) | ✅ done |
 | UI-P2-4 | Evidence | `/applications/[id]/evidence` | `evidence` router (exists) | ✅ done |
-| UI-P2-5 | Findings | `/applications/[id]/findings` | `assessments` router (exists — findings are its output) | ⬜ |
+| UI-P2-5 | Findings | `/applications/[id]/findings` | `assessments` router (exists — findings are its output) | ✅ done |
 | UI-P2-6 | Runbooks | `/applications/[id]/runbooks` | none exists — **stub with static sample runbook cards** | ⏸️ stub only |
 
 ## Phase 3 — AI Workspace
