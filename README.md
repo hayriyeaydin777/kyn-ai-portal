@@ -166,8 +166,12 @@ The app has a Tailwind-styled shell with a responsive sidebar
 ([`Sidebar.svelte`](apps/web/src/lib/Sidebar.svelte)) and shared design tokens — a first
 pass at matching the [`docs/Designs/`](docs/Designs/) mockups. Per-page visual
 polish (data tables, dashboard layouts, status badges) is still incomplete — see
-[`docs/Planning/DEFERRED-ENHANCEMENTS.md`](docs/Planning/DEFERRED-ENHANCEMENTS.md) for what's
-tracked as not-yet-done.
+[`docs/Planning/UI-INTEGRATION-PLAN-2.md`](docs/Planning/UI-INTEGRATION-PLAN-2.md) for the
+current grouped completion plan.
+
+### AI Workspace reference
+
+![AI Workspace reference](docs/Designs/ai-workspace.png)
 
 ---
 
